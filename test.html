@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font Size Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body style="font-family: 'Georgia Pro', Georgia, 'Times New Roman', serif; background-color: #faf8f5;">
+    
+    <section class="max-w-5xl mx-auto px-6 py-16">
+        <h1 class="text-2xl mb-8">Font Size Test</h1>
+        
+        <h2 class="text-xl mb-4">This is from What We Do page structure:</h2>
+        <div class="space-y-5 text-stone-700 leading-relaxed text-lg">
+            <p>
+                This paragraph uses: space-y-5 text-stone-700 leading-relaxed text-lg on the wrapper div. The text-lg class in Tailwind CSS sets font-size to 1.125rem (18px) and line-height to 1.75rem (28px). This should be the standard size.
+            </p>
+            <p>
+                Another paragraph with the same styling. If you can read this clearly and it matches the What We Do page, then the styling is correct.
+            </p>
+        </div>
+
+        <h2 class="text-xl mb-4 mt-8">This is from current About page structure:</h2>
+        <div class="space-y-5 text-stone-700 leading-relaxed text-lg">
+            <p>
+                This paragraph also uses: space-y-5 text-stone-700 leading-relaxed text-lg on the wrapper div. It should look IDENTICAL to the paragraphs above.
+            </p>
+            <p>
+                If these paragraphs look different sizes, please let me know. They use the exact same classes.
+            </p>
+        </div>
+    </section>
+
+</body>
+</html>

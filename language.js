@@ -10,37 +10,37 @@
     // Place-name link data and injector - defined early so it works even without translations (e.g. home page fallback text)
     var PLACE_LINK_PAIRS = {
         en: [
-            { name: 'Parco delle Madonie', url: 'parco-madonie.html' },
-            { name: 'Sicily', url: 'sicily.html' },
-            { name: 'Isnello', url: 'isnello.html' },
+            { name: 'Parco delle Madonie', url: 'parco-madonie(1).html' },
+            { name: 'Sicily', url: 'sicily(1).html' },
+            { name: 'Isnello', url: 'isnello(1).html' },
             { name: 'Collesano', url: 'collesano.html' },
             { name: 'Castelbuono', url: 'castelbuono.html' }
         ],
         it: [
-            { name: 'Parco delle Madonie', url: 'parco-madonie.html' },
-            { name: 'Sicilia', url: 'sicily.html' },
-            { name: 'Isnello', url: 'isnello.html' },
+            { name: 'Parco delle Madonie', url: 'parco-madonie(1).html' },
+            { name: 'Sicilia', url: 'sicily(1).html' },
+            { name: 'Isnello', url: 'isnello(1).html' },
             { name: 'Collesano', url: 'collesano.html' },
             { name: 'Castelbuono', url: 'castelbuono.html' }
         ],
         scn: [
-            { name: 'Parco delle Madonie', url: 'parco-madonie.html' },
-            { name: 'Sicilia', url: 'sicily.html' },
-            { name: 'Isnello', url: 'isnello.html' },
+            { name: 'Parco delle Madonie', url: 'parco-madonie(1).html' },
+            { name: 'Sicilia', url: 'sicily(1).html' },
+            { name: 'Isnello', url: 'isnello(1).html' },
             { name: 'Collesano', url: 'collesano.html' },
             { name: 'Castelbuono', url: 'castelbuono.html' }
         ],
         es: [
-            { name: 'Parco delle Madonie', url: 'parco-madonie.html' },
-            { name: 'Sicilia', url: 'sicily.html' },
-            { name: 'Isnello', url: 'isnello.html' },
+            { name: 'Parco delle Madonie', url: 'parco-madonie(1).html' },
+            { name: 'Sicilia', url: 'sicily(1).html' },
+            { name: 'Isnello', url: 'isnello(1).html' },
             { name: 'Collesano', url: 'collesano.html' },
             { name: 'Castelbuono', url: 'castelbuono.html' }
         ],
         fr: [
-            { name: 'Parco delle Madonie', url: 'parco-madonie.html' },
-            { name: 'Sicile', url: 'sicily.html' },
-            { name: 'Isnello', url: 'isnello.html' },
+            { name: 'Parco delle Madonie', url: 'parco-madonie(1).html' },
+            { name: 'Sicile', url: 'sicily(1).html' },
+            { name: 'Isnello', url: 'isnello(1).html' },
             { name: 'Collesano', url: 'collesano.html' },
             { name: 'Castelbuono', url: 'castelbuono.html' }
         ]

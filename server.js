@@ -23,6 +23,16 @@ app.get('/support.html', (req, res) => res.sendFile(supportPath));
 app.get('/support-cause', (req, res) => res.sendFile(supportPath));
 app.get('/support-cause.html', (req, res) => res.sendFile(supportPath));
 
+// Explicit routes for About page (so it always loads)
+const aboutPath = path.join(__dirname, 'about.html');
+app.get('/about', (req, res) => res.sendFile(aboutPath));
+app.get('/about.html', (req, res) => res.sendFile(aboutPath));
+
+// Explicit routes for Current Restorations page (filename has space)
+const currentRestorationPath = path.join(__dirname, 'current-restoration 12.html');
+app.get('/current-restoration', (req, res) => res.sendFile(currentRestorationPath));
+app.get('/current-restoration.html', (req, res) => res.sendFile(currentRestorationPath));
+
 // Serve static HTML, JS, CSS, and assets from current directory
 app.use(express.static(path.join(__dirname)));
 

@@ -1,0 +1,53 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.log
+*.cache
+
+# Node modules (if you add them later)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build files (if you add them later)
+dist/
+build/
+*.min.js
+*.min.css
+
+# Large files
+Isnello Investment Summary.pptx
+*.pptx
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Numbered duplicate copies (keep only canonical: index.html, about.html, etc.)
+/index *.html
+/about *.html
+/castelbuono *.html
+/collesano *.html
+/contact *.html
+/current-restoration *.html
+/isnello *.html
+/parco-madonie *.html
+/sicily *.html
+/support-cause *.html
+/language *.js
+/translations *.js
+/translations(1)*.js
+/translations-data *.js
+cleanup-repo.ps1

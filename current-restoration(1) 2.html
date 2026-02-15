@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Restorations - Sicilia Bedda</title>
+    <script>window.translations = window.translations || { en: {} };</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="translations-data.js"></script>
+    <script>window.translations = window.translations || (typeof translations !== 'undefined' ? translations : null);</script>
+    <style>
+        body { font-family: 'Georgia Pro', Georgia, 'Times New Roman', serif; background-color: #faf8f5; }
+        h1, h2, h3 { font-family: 'Georgia Pro', Georgia, 'Times New Roman', serif; }
+        .language-dropdown { position: relative; }
+        .language-trigger { background: none; border: none; cursor: pointer; font: inherit; font-size: inherit; color: inherit; padding: 0.25rem 0; display: inline-flex; align-items: center; gap: 0.35rem; color: #44403c; border-left: 1px solid #e7e5e4; margin-left: 0.5rem; padding-left: 0.75rem; }
+        .language-trigger:hover { color: #1c1917; }
+        .language-trigger-flag { width: 20px; height: 15px; object-fit: cover; border-radius: 1px; }
+        .language-trigger-arrow { font-size: 0.65em; opacity: 0.8; }
+        .language-menu { position: absolute; top: 100%; right: 0; margin-top: 0.25rem; background: #fafaf9; border: 1px solid #e7e5e4; border-radius: 0.375rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08); min-width: 140px; z-index: 1000; display: none; }
+        .language-menu.active { display: block; }
+        .about-dropdown { position: relative; }
+        .about-dropdown-button { background: none; border: none; cursor: pointer; font: inherit; font-size: inherit; color: inherit; font-weight: 400; padding: 0; display: inline-flex; align-items: center; gap: 0.25rem; }
+        .about-dropdown-button:hover { color: #1c1917; }
+        .about-dropdown-menu { position: absolute; top: 100%; left: 0; margin-top: 2px; background: white; border: 1px solid #d1d5db; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); min-width: 200px; z-index: 1000; display: none; }
+        .about-dropdown-menu.active { display: block; }
+        .about-dropdown-item { display: block; padding: 0.5rem 1rem; min-height: 36px; font-size: 0.9375rem; color: #44403c; text-decoration: none; transition: background 0.15s; line-height: 1.4; }
+        .about-dropdown-item:hover { background: #f5f5f4; color: #1c1917; }
+        .language-option { padding: 0.5rem 0.75rem; display: flex; align-items: center; gap: 0.5rem; cursor: pointer; font-size: 0.875rem; color: #44403c; transition: background 0.15s; }
+        .language-option:hover { background: #f5f5f4; color: #1c1917; }
+        .language-option img { width: 20px; height: 15px; object-fit: cover; border-radius: 1px; }
+        .nav-link { font-weight: 400; }
+        .carousel-container { position: relative; overflow: hidden; }
+        .carousel-track { display: flex; transition: transform 0.5s ease; }
+        .carousel-item { min-width: 100%; cursor: pointer; position: relative; overflow: hidden; height: 500px; display: flex; align-items: center; justify-content: center; }
+        @media (min-width: 1024px) {
+            .carousel-item { height: 450px; }
+        }
+        @media (max-width: 640px) {
+            .carousel-item { height: 400px; }
+        }
+        .carousel-item img { transition: transform 0.3s ease; display: block; }
+        .carousel-image { 
+            display: block; 
+            object-fit: contain; 
+            object-position: center; 
+            margin: 0 auto; 
+        }
+        /* Force all carousel images to exact container height */
+        .carousel-item .carousel-image {
+            height: 500px !important;
+            min-height: 500px !important;
+            width: auto !important;
+            max-width: 100% !important;
+            object-fit: contain !important;
+        }
+        @media (min-width: 1024px) {
+            .carousel-item .carousel-image {
+                height: 450px !important;
+                min-height: 450px !important;
+            }
+        }
+        @media (max-width: 640px) {
+            .carousel-item .carousel-image {
+                height: 400px !important;
+                min-height: 400px !important;
+            }
+        }
+        .carousel-item img[style*="object-fit: contain"] { object-fit: contain !important; }
+        /* Specific fix for Don Bosco image #2 - ensure it fills full height */
+        img[src="Don Bosco_Entrance2.JPG"] {
+            height: 500px !important;
+            min-height: 500px !important;
+            max-height: 500px !important;
+            width: auto !important;
+            max-width: none !important;
+            object-fit: contain !important;
+            display: block !important;
+            flex-shrink: 0 !important;
+        }
+        @media (min-width: 1024px) {
+            img[src="Don Bosco_Entrance2.JPG"] {
+                height: 450px !important;
+                min-height: 450px !important;
+                max-height: 450px !important;
+            }
+        }
+        @media (max-width: 640px) {
+            img[src="Don Bosco_Entrance2.JPG"] {
+                height: 400px !important;
+                min-height: 400px !important;
+                max-height: 400px !important;
+            }
+        }
+        /* Ensure the carousel-item container clips overflow for image #2 */
+        .carousel-item:has(img[src="Don Bosco_Entrance2.JPG"]) {
+            overflow: hidden !important;
+        }
+        .carousel-item:hover img { transform: scale(1.02); }
+        .property-card { background: white; border-radius: 8px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .property-card:hover { transform: translateY(-4px); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12); }
+        .floor-badge { display: inline-block; background: #A52A2A; color: white; padding: 0.375rem 0.75rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.75rem; }
+        .image-counter {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            z-index: 7;
+        }
+        .carousel-caption-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); padding: 2rem 1.5rem 1.5rem; color: white; z-index: 5; }
+        .carousel-caption-overlay h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .carousel-caption-overlay p { font-size: 0.95rem; opacity: 0.95; line-height: 1.6; }
+        .stats-grid { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 1.5rem 2rem; 
+            margin-top: 1.5rem; 
+            margin-bottom: 2rem;
+            justify-content: center;
+            padding: 1.5rem 0;
+            border-top: 1px solid #e7e5e4;
+            border-bottom: 1px solid #e7e5e4;
+        }
+        @media (min-width: 1024px) {
+            .stats-grid { 
+                justify-content: center;
+                gap: 2rem 3rem;
+            }
+        }
+        .restoration-column { display: flex; flex-direction: column; }
+        @media (min-width: 1024px) {
+            .restoration-column:first-child { border-right: 1px solid #e7e5e4; padding-right: 3rem; }
+            .restoration-column:last-child { padding-left: 3rem; }
+            .restoration-column h2 { min-height: 48px; }
+        }
+        .carousel-section { 
+            display: flex; 
+            flex-direction: column; 
+        }
+        @media (min-width: 1024px) {
+            .carousel-section { 
+                height: 550px; 
+                justify-content: space-between;
+            }
+            .carousel-container { 
+                flex: 1;
+                min-height: 450px; 
+            }
+            .carousel-dots {
+                flex-shrink: 0;
+                margin-top: auto;
+                margin-bottom: 0.25rem;
+            }
+            .narrative-content { 
+                height: 200px; 
+                margin-bottom: 0.5rem;
+                margin-top: 0.25rem;
+                overflow-y: auto;
+            }
+            .carousel-content-section {
+                margin: 0 !important;
+                padding: 0 !important;
+                min-height: 0 !important;
+                display: block;
+            }
+            .carousel-content-section p {
+                margin: 0 !important;
+                padding: 0 !important;
+                line-height: inherit;
+            }
+            /* Ensure both narrative sections start at the same vertical position */
+            #residence-carousel-content,
+            #donbosco-carousel-content {
+                display: flex;
+                flex-direction: column;
+            }
+            #residence-carousel-content .carousel-content-section:first-child,
+            #donbosco-carousel-content .carousel-content-section:first-child {
+                margin-top: 0 !important;
+                padding-top: 0 !important;
+            }
+            .budget-section {
+                padding-top: 0.5rem;
+            }
+        }
+        .stat-item { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center;
+            padding: 0;
+            background: transparent;
+            border-radius: 0;
+            text-align: center;
+        }
+        .stat-value { 
+            font-size: 1.5rem; 
+            font-weight: 600; 
+            color: #A52A2A; 
+            white-space: nowrap;
+            line-height: 1.2;
+            margin-bottom: 0.25rem;
+        }
+        .stat-label { 
+            font-size: 0.8125rem; 
+            color: #78716c; 
+            margin-top: 0;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 500;
+        }
+        .floor-section { margin-top: 2rem; padding-top: 1.25rem; border-top: 1px solid #e7e5e4; }
+        .floor-section:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+        .component-row { display: grid; grid-template-columns: 5fr 100px; gap: 2rem; align-items: start; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #e7e5e4; }
+        @media (max-width: 640px) {
+            .component-row { grid-template-columns: minmax(0, 1fr) auto; gap: 1rem; align-items: start; }
+            .budget-amount { text-align: right; font-size: 1.1rem; }
+        }
+        .component-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .component-content { flex: 1; }
+        .budget-amount { text-align: right; font-size: 1.25rem; font-weight: 600; color: #A52A2A; cursor: pointer; }
+        .budget-total { margin-top: 1.5rem; padding-top: 1rem; border-top: 2px solid #A52A2A; display: flex; justify-content: space-between; align-items: center; }
+        .budget-total-label { font-size: 1.5rem; font-weight: 600; color: #292524; }
+        .budget-total-amount { font-size: 2rem; font-weight: 700; color: #A52A2A; cursor: pointer; }
+        .exchange-rate-footnote {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e7e5e4;
+            text-align: center;
+            font-size: 0.875rem;
+            color: #78716c;
+            line-height: 1.6;
+        }
+        .carousel-nav { background: #A52A2A; border: none; width: 48px; height: 48px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white; transition: all 0.3s ease; flex-shrink: 0; }
+        .carousel-nav:hover { background: #8B2323; color: white; }
+        .carousel-nav-container { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 16px; width: 100%; min-width: 0; max-width: 100%; }
+        .carousel-dots { display: flex; align-items: center; justify-content: center; gap: 8px; flex: 1 1 auto; min-width: 0; height: 48px; overflow-x: auto; overflow-y: hidden; padding: 0 4px; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
+        .carousel-dots::-webkit-scrollbar { height: 4px; }
+        .carousel-dots::-webkit-scrollbar-thumb { background: #d6d3d1; border-radius: 2px; }
+        .carousel-dot { width: 10px; height: 10px; border-radius: 50%; background: #d6d3d1; border: none; cursor: pointer; transition: background 0.3s ease; flex-shrink: 0; }
+        .carousel-dot.active { background: #57534e; }
+        .image-placeholder { background: #e8e5df; display: flex; align-items: center; justify-content: center; color: #9a9288; font-size: 0.875rem; border: 1px dashed #c9c5bd; }
+        .carousel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.5rem;
+            font-family: 'Georgia Pro', Georgia, 'Times New Roman', serif;
+            font-weight: 500;
+            z-index: 6;
+        }
+        /* Expandable Planned Improvements sections */
+        .improvement-toggle { cursor: pointer; display: flex; align-items: center; gap: 0.5rem; user-select: none; }
+        .improvement-toggle:hover { opacity: 0.85; }
+        .improvement-toggle .toggle-icon { font-size: 1.25rem; font-weight: bold; width: 1.5rem; flex-shrink: 0; color: #A52A2A; }
+        @media (max-width: 767px) {
+            body { overflow-x: hidden; -webkit-text-size-adjust: 100%; }
+            header { overflow: visible; }
+            nav { overflow: visible; }
+            .about-dropdown-menu { z-index: 1100; }
+            .language-trigger { min-height: 44px; padding: 0.5rem 0.25rem 0.5rem 0.75rem; -webkit-tap-highlight-color: transparent; }
+            .language-option { min-height: 44px; padding: 0.75rem; -webkit-tap-highlight-color: transparent; }
+            .about-dropdown-button { min-height: 44px; padding: 0.5rem 0.25rem; }
+            .about-dropdown-item { min-height: 44px; padding: 0.75rem 1rem; display: flex; align-items: center; -webkit-tap-highlight-color: transparent; }
+            .nav-link { min-height: 44px; display: inline-flex; align-items: center; padding: 0.25rem 0; }
+            .improvement-toggle { min-height: 44px; padding: 0.5rem 0; -webkit-tap-highlight-color: transparent; }
+            .carousel-nav { min-width: 48px; min-height: 48px; -webkit-tap-highlight-color: transparent; }
+            .carousel-dot { padding: 0.6rem; margin: 0 -0.2rem; -webkit-tap-highlight-color: transparent; }
+        }
+        .improvement-details { overflow: hidden; }
+        .improvement-details.collapsed { display: none; }
+        .improvement-details.expanded { display: block; margin-top: 0.5rem; }
+    </style>
+</head>
+<body>
+    <header class="border-b border-stone-200 bg-white/90 backdrop-blur-sm md:sticky md:top-0 z-40">
+        <div class="max-w-4xl mx-auto px-6 py-4">
+            <div class="flex flex-col items-center mb-4">
+                <a href="index.html" class="text-center">
+                    <h1 class="text-4xl md:text-5xl mb-2 leading-tight" style="font-family: 'Trajan Pro', 'Times New Roman', Georgia, serif; font-weight: 600; letter-spacing: 0.15em; color: #8B4513;" data-i18n="heroTitle">SICILIA BEDDA</h1>
+                </a>
+            </div>
+            <nav class="flex flex-wrap justify-center gap-4 text-sm text-stone-700 items-center">
+                <a href="index.html" class="nav-link hover:text-stone-900" data-i18n="navHome">Home</a>
+                <div class="about-dropdown">
+                    <button type="button" class="about-dropdown-button nav-link hover:text-stone-900" id="about-dropdown-button" aria-haspopup="true" aria-expanded="false">
+                        <span data-i18n="navAbout">About</span>
+                    </button>
+                    <div class="about-dropdown-menu" id="about-dropdown-menu" role="menu">
+                        <a href="about(1).html" class="about-dropdown-item" role="menuitem" data-i18n="navOurFounder">Our Founder</a>
+                        <a href="sicily.html" class="about-dropdown-item" role="menuitem" data-i18n="navSicily">Sicily</a>
+                        <a href="parco-madonie(1).html" class="about-dropdown-item" role="menuitem" data-i18n="navParcoMadonie">Parco delle Madonie</a>
+                        <a href="isnello.html" class="about-dropdown-item" role="menuitem" data-i18n="navIsnello">Isnello</a>
+                        <a href="collesano(1).html" class="about-dropdown-item" role="menuitem" data-i18n="navCollesano">Collesano</a>
+                        <a href="castelbuono.html" class="about-dropdown-item" role="menuitem" data-i18n="navCastelbuono">Castelbuono</a>
+                    </div>
+                </div>
+                <a href="current-restoration.html" class="nav-link hover:text-stone-900" data-i18n="navCurrentRestoration">Current Restorations</a>
+                <div class="about-dropdown">
+                    <button type="button" class="about-dropdown-button nav-link hover:text-stone-900" id="support-dropdown-button" aria-haspopup="true" aria-expanded="false">
+                        <span data-i18n="navSupportCause">Support Our Cause</span>
+                    </button>
+                    <div class="about-dropdown-menu" id="support-dropdown-menu" role="menu">
+                        <a href="support-cause.html#heritage-collections" class="about-dropdown-item" role="menuitem" data-i18n="heritageCollectionsTitle">Heritage Collections</a>
+                        <a href="support-cause.html#stay-section" class="about-dropdown-item" role="menuitem" data-i18n="stayTitle">Stay in a Restored Village Home</a>
+                        <a href="support-cause.html#donations" class="about-dropdown-item" role="menuitem" data-i18n="donationsTitle">Make a Donation</a>
+                    </div>
+                </div>
+                <a href="contact(1).html" class="nav-link hover:text-stone-900" data-i18n="navContact">Contact Us</a>
+                <div class="language-dropdown">
+                    <button type="button" class="language-trigger nav-link hover:text-stone-900" id="language-button" aria-haspopup="true" aria-expanded="false"><img src="https://flagcdn.com/w40/gb.png" alt="" id="current-flag" class="language-trigger-flag"><span id="current-language">English</span><span class="language-trigger-arrow" aria-hidden="true">▾</span></button>
+                    <div class="language-menu" id="language-menu" role="menu">
+                        <div class="language-option" data-lang="en" role="menuitem"><img src="https://flagcdn.com/w40/gb.png" alt=""><span>English</span></div>
+                        <div class="language-option" data-lang="it" role="menuitem"><img src="https://flagcdn.com/w40/it.png" alt=""><span>Italiano</span></div>
+                        <div class="language-option" data-lang="scn" role="menuitem"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3Cpath fill='%23ffc72c' d='M0 0h3v1H0z'/%3E%3Cpath fill='%23d21034' d='M0 1h3v1H0z'/%3E%3C/svg%3E" alt=""><span>Sicilianu</span></div>
+                        <div class="language-option" data-lang="es" role="menuitem"><img src="https://flagcdn.com/w40/es.png" alt=""><span>Español</span></div>
+                        <div class="language-option" data-lang="fr" role="menuitem"><img src="https://flagcdn.com/w40/fr.png" alt=""><span>Français</span></div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="max-w-7xl mx-auto px-6 py-8">
+        <!-- Hero Introduction -->
+        <div class="mb-6">
+            <h1 class="text-4xl md:text-5xl font-normal text-stone-800 mb-4 text-center" style="font-family: 'Trajan Pro', 'Times New Roman', Georgia, serif; letter-spacing: 0.1em;">Cesare Battisti & Don Bosco</h1>
+            <p class="text-stone-700 leading-relaxed text-lg max-w-4xl mx-auto" data-i18n="currentRestorationIntro">Cesare Battisti & Don Bosco is our first restoration—a four-floor historic building in Isnello, substantially renovated starting in 2020. The property is restored with care and restraint, using local artisans and traditional materials. The images below offer a glimpse of the work.</p>
+        </div>
+
+        <!-- Restorations Grid Container -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-0 items-start">
+        
+        <!-- Principal Residence Carousel -->
+        <div class="restoration-column">
+            <div class="text-center mb-4">
+                <span class="floor-badge" style="font-size: 1rem; padding: 0.5rem 1rem;">Via Cesare Battisti, 31</span>
+            </div>
+            
+            <div class="carousel-section">
+            <div class="carousel-container rounded-sm overflow-hidden">
+                <div class="carousel-track" id="residence-carousel-track">
+                <div class="carousel-item">
+                    <img src="Cesare Battisti_Main Entrance.PNG" alt="Cesare Battisti Main Entrance" class="carousel-image" style="object-fit: contain; background-color: #faf8f5; height: 100%; width: auto; max-width: 100%; object-position: center;" onerror="this.onerror=null; this.src=''; this.style.display='none'; this.parentElement.querySelector('.image-placeholder').style.display='flex';">
+                    <div class="image-placeholder rounded-sm carousel-image" style="display: none; position: absolute; top: 0; left: 0; right: 0;"><span>Cesare Battisti Main Entrance</span></div>
+                    <div class="image-counter">1 / 15</div>
+                    <div class="carousel-caption" data-i18n="restorationCaption1">Front Entrance</div>
+                </div>
+                <div class="carousel-item">
+                    <img src="Piano Primo_Bedroom.JPG" alt="Piano Primo Bedroom" class="carousel-image" style="object-fit: contain; background-color: #faf8f5; height: 100%; width: auto; max-width: 100%; object-position: center;" onerror="this.onerror=null; this.src=''; this.style.display='none'; this.parentElement.querySelector('.image-placeholder').style.display='flex';">
+                    <div class="image-placeholder rounded-sm carousel-image" style="display: none; position: absolute; top: 0; left: 0; right: 0;"><span>Piano Primo Bedroom</span></div>
+                    <div class="image-counter">2 / 13</div>
+                    <div class="carousel-caption" data-i18n="restorationCaption2">Second Floor — Bedroom</div>
+                </div>
+                <div class="carousel-item">
+                    <img src="Piano Primo_Office Area.JPG" alt="Piano Primo Office Area" class="carousel-image" style="object-fit: contain; background-color: #faf8f5; height: 100%; width: auto; max-width: 100%; object-position: center;" onerror="this.onerror=null; this.src=''; this.style.display='none'; this.parentElement.querySelector('.image-placeholder').style.display='flex';">
+                    <div class="image-placeholder rounded-sm carousel-image" style="display: none; position: absolute; top: 0; left: 0; right: 0;"><span>Piano Primo Office Area</span></div>
+                    <div class="image-counter">3 / 15</div>
+                    <div class="carousel-caption" data-i18n="restorationCaption3">Second Floor — Office Area</div>
+                </div>
+                <div class="carousel-item">
+                    <img src="Piano Primo_Bathroom.JPG" alt="Piano Primo Bathroom" class="carousel-image" style="object-fit: contain; background-color: #faf8f5; height: 100%; width: auto; max-width: 100%; object-position: center;" onerror="this.onerror=null; this.src=''; this.style.display='none'; this.parentElement.querySelector('.image-placeholder').style.display='flex';">
+                    <div class="image-placeholder rounded-sm carousel-image" style="display: none; position: absolute; top: 0; left: 0; right: 0;"><span>Piano Primo Bathroom</span></div>
+                    <div class="image-counter">4 / 13</div>
+                    <div class="carousel-caption" data-i18n="restorationCaption4">Second Floor — Bathroom</div>
+                </div>
+                <div class="carousel-item">
+                    <img src="Piano Primo_Bathroom2.JPG" alt="Piano Primo Bathroom 2" class="carousel-image" style="object-fit: contain; background-color: #faf8f5; height: 100%; width: auto; max-width: 100%; object-position: center;" onerror="this.onerror=null; this.src=''; this.style.display='none'; this.parentElement.querySelector('.image-placeholder').style.display='flex';">
+                    <div class="image-placeholder rounded-sm carousel-image" style="display: none; position: absolute; top: 0; left: 0; right: 0;"><span>Piano Primo Bathroom 2</span></div>
+                    <div class="image-counter">5 / 15</div>
+                    <div class="carousel-caption" data-i18n="restorationCaption5">Second Floor — Bathroom</div>
+                </div>
+                <div class="carousel-item">
+                    <img src="Piano Secondo_Living Room.JPG" alt="Piano Secondo Living Room" class="carousel-image" style="object-fit: contain; background-color: #faf8f5; height: 100%; width: auto; max-width: 100%; object-position: center;" onerror="this.onerror=null; this.src=''; this.style.display='none'; this.parentElement.querySelector('.image-placeholder').style.display='flex';">
+                    <div class="image-placeholder rounded-sm carousel-image" style="display: none; position: absolute; top: 0; left: 0; right: 0;"><span>Piano Secondo Living Room</span></div>
+                    <div class="image-counter">6 / 15</div>
+                    <div class="carousel-caption" data-i18n="restorationCaption6">Third Floor — Living Room</div>
+                </div>
+                <div class="carousel-item">
+                    <img src="Piano Secondo_Balcony View.jpeg" alt="Piano Secondo Balcony View" class="carousel-image" style="object-fit: contain; background-color: #faf8f5; height: 100%; width: auto; max-width: 100%; object-position: center;" onerror="this.onerror=null; this.src=''; this.style.display='none'; this.parentElement.querySelector('.image-placeholder').style.display='flex';">
+                    <div class="image-placeholder rounded-sm carousel-image" style="display: none; position: absolute; top: 0; left: 0; right: 0;"><span>Piano Secondo Balcony View</span></div>
+                    <div class="image-counter">7 / 15</div>
+                    <div class="carousel-caption" data-i18n="restorationCaption7">Third Floor — Balcony View</div>
+                </div>
+                <div class="carousel-item">
+                    <img src="Piano Secondo_Kitchen.JPG" alt="Piano Secondo Kitchen" class="carousel-image" style="object-fit: contain; background-color: #faf8f5; height: 100%; width: auto; max-width: 100%; object-position: center;" onerror="this.onerror=null; this.src=''; this.style.display='none'; this.parentElement.querySelector('.image-placeholder').style.display='flex';">
+                    <div class="image-placeholder rounded-sm carousel-image" style="display: none; position: absolute; top: 0; left: 0; right: 0;"><span>Piano Secondo Kitchen</span></div>
+                    <div class="image-counter">8 / 15</div>
+                    <div class="carousel-caption" data-i18n="restorationCaption8">Third Floor — Kitchen</div>
+                </div>
+                <div class="carousel-item">
+                    <img src="Piano Secondo_Bathroom.JPG" alt="Piano Secondo Bathroom" class="carousel-image" style="object-fit: contain; background-color: #faf8f5; height: 100%; width: auto; max-width: 100%; object-position: center;" onerror="this.onerror=null; this.src=''; this.style.display='none'; this.parentElement.querySelector('.image-placeholder').style.display='flex';">
+                    <div class="image-placeholder rounded-sm carousel-image" style="display: none; position: absolute; top: 0; left: 0; right: 0;"><span>Piano Secondo Bathroom</span></div>
+                    <div class="image-counter">9 / 18</div>
+                    <div class="carousel-caption" data-i18n="restorationCaption9">Third Floor — Bathroom</div>
+                </div>
+                <div class="carousel-item">
+                    <img src="Piano Terzo_Hallway.JPG" alt="Piano Terzo Hallway" class="carousel-image" style="object-fit: contain; background-color: #faf8f5; height: 100%; width: auto; max-width: 100%; object-position: center;" onerror="this.onerror=null; this.src=''; this.style.display='none'; this.parentElement.querySelector('.image-placeholder').style.display='flex';">
+                    <div class="image-placeholder rounded-sm carousel-image" style="display: none; position: absolute; top: 0; left: 0; right: 0;"><span>Piano Terzo Hallway</span></div>
+                    <div class="image-counter">10 / 15</div>
+                    <div class="carousel-caption" data-i18n="restorationCaption10">Stairway from Third to Fourth Floor</div>
+                </div>
+                <div class="carousel-item">
+                    <img src="Piano Terzo_Bedroom.jpeg" alt="Piano Terzo Bedroom" class="carousel-image" style="object-fit: contain; background-color: #faf8f5; height: 100%; width: auto; max-width: 100%; object-position: center;" onerror="this.onerror=null; this.src=''; this.style.display='none'; this.parentElement.querySelector('.image-placeholder').style.display='flex';">
+                    <div class="image-placeholder rounded-sm carousel-image" style="display: none; position: absolute; top: 0; left: 0; right: 0;"><span>Piano Terzo Bedroom</span></div>
+                    <div class="image-counter">11 / 15</div>
+                    <div class="carousel-caption" data-i18n="restorationCaption11">Fourth Floor — Bedroom</div>
+                </div>
+                <div class="carousel-item">
+                    <img src="Piano Terzo_Terazza.JPG" alt="Piano Terzo Terrace" class="carousel-image" style="object-fit: contain; background-color: #faf8f5; height: 100%; width: auto; max-width: 100%; object-position: center;" onerror="this.onerror=null; this.src=''; this.style.display='none'; this.parentElement.querySelector('.image-placeholder').style.display='flex';">
+                    <div class="image-placeholder rounded-sm carousel-image" style="display: none; position: absolute; top: 0; left: 0; right: 0;"><span>Piano Terzo Terrace</span></div>
+                    <div class="image-counter">12 / 18</div>
+                    <div class="carousel-caption" data-i18n="restorationCaption12">Fourth Floor — Rooftop Terrace</div>
+                </div>
+                <div class="carousel-item">
+                    <img src="Piano Terzo_Terazza2.JPG" alt="Piano Terzo Terrace 2" class="carousel-image" style="object-fit: contain; background-color: #faf8f5; height: 100%; width: auto; max-width: 100%; object-position: center;" onerror="this.onerror=null; this.src=''; this.style.display='none'; this.parentElement.querySelector('.image-placeholder').style.display='flex';">
+                    <div class="image-placeholder rounded-sm carousel-image" style="display: none; position: absolute; top: 0; left: 0; right: 0;"><span>Piano Terzo Terrace 2</span></div>
+                    <div class="image-counter">13 / 15</div>
+                    <div class="carousel-caption" data-i18n="restorationCaption13">Fourth Floor — Rooftop Terrace</div>
+                </div>
+                <div class="carousel-item">
+                    <img src="Piano Terzo_Day View.jpeg" alt="Piano Terzo Day View" class="carousel-image" style="object-fit: contain; background-color: #faf8f5; height: 100%; width: auto; max-width: 100%; object-position: center;" onerror="this.onerror=null; this.src=''; this.style.display='none'; this.parentElement.querySelector('.image-placeholder').style.display='flex';">
+                    <div class="image-placeholder rounded-sm carousel-image" style="display: none; position: absolute; top: 0; left: 0; right: 0;"><span>Piano Terzo Day View</span></div>
+                    <div class="image-counter">14 / 15</div>
+                    <div class="carousel-caption" data-i18n="restorationCaption14">Rooftop Terrace — Daytime View</div>
+                </div>
+                <div class="carousel-item">
+                    <img src="Piano Terzo_Night View.jpg" alt="Piano Terzo Night View" class="carousel-image" style="object-fit: contain; background-color: #faf8f5; height: 100%; width: auto; max-width: 100%; object-position: center;" onerror="this.onerror=null; this.src=''; this.style.display='none'; this.parentElement.querySelector('.image-placeholder').style.display='flex';">
+                    <div class="image-placeholder rounded-sm carousel-image" style="display: none; position: absolute; top: 0; left: 0; right: 0;"><span>Piano Terzo Night View</span></div>
+                    <div class="image-counter">15 / 15</div>
+                    <div class="carousel-caption" data-i18n="restorationCaption15">Rooftop Terrace — Nighttime View</div>
+                </div>
+            </div>
+            <div class="carousel-nav-container">
+                <button class="carousel-nav prev" id="residence-carousel-prev">‹</button>
+                <div class="carousel-dots" id="residence-carousel-dots"></div>
+                <button class="carousel-nav next" id="residence-carousel-next">›</button>
+            </div>
+            </div>
+            </div>
+        
+            <!-- Principal Residence Narrative Content -->
+            <div id="residence-carousel-content" class="narrative-content space-y-6 text-stone-700 leading-relaxed text-lg mb-4">
+            <div id="residence-content-slide-0" class="carousel-content-section">
+                <p data-i18n="narrativeSlide1">The main entrance is easily accessible from a small community parking lot in front of the property. The entrance opens into marble stairs that lead to the second floor, where the living area begins, and a separate door on the ground floor that leads to the workshop and the Don Bosco Studio.</p>
+            </div>
+            <div id="residence-content-slide-1" class="carousel-content-section" style="display: none;">
+                <p data-i18n="narrativeSlide2">The second floor includes a spacious and comfortable bedroom featuring glazed ceramic tiles, a closet, and a balcony with mountain views. The balcony has new glass doors and traditional, Sicilian tiling, connecting the room to the surrounding landscape.</p>
+            </div>
+            <div id="residence-content-slide-2" class="carousel-content-section" style="display: none;">
+                <p data-i18n="narrativeSlide3">The office area is a flexible space with traditional ceramic tiles connecting the second floor bedroom and bathroom, and a marble stairway that leads to the ground floor and another stairway with an alcove that leads to the third floor.</p>
+            </div>
+            <div id="residence-content-slide-3" class="carousel-content-section" style="display: none;">
+                <p data-i18n="narrativeSlide4">The remodeled bathroom is large, featuring simple, traditional tile work, a small shower and tub, a window for ventilation, and a closet that houses a water heater and provides storage space.</p>
+            </div>
+            <div id="residence-content-slide-4" class="carousel-content-section" style="display: none;">
+                <p data-i18n="narrativeSlide5">The bathroom's generous proportions maintain the space's original character while providing modern functionality.</p>
+            </div>
+            <div id="residence-content-slide-5" class="carousel-content-section" style="display: none;">
+                <p data-i18n="narrativeSlide6">The living room, which is connected to the kitchen, is expansive and flowing—meant for relaxed living. It's the heart of the residence, with a wood burning fireplace and lots of natural light from a balcony that frames views of the forest and mountains that surround Isnello.</p>
+            </div>
+            <div id="residence-content-slide-6" class="carousel-content-section" style="display: none;">
+                <p data-i18n="narrativeSlide7">Nighttime views from the living room balcony are stunning, showcasing Isnello lit up on the edge of the forest that surround the village. This outdoor space extends the living area, connecting it to the village and its natural setting.</p>
+            </div>
+            <div id="residence-content-slide-7" class="carousel-content-section" style="display: none;">
+                <p data-i18n="narrativeSlide8">The kitchen, with an open beam ceiling and breakfast bar, connects directly to the living room. Its gas stove and oven anchor the traditionally tiled cooking area, providing functionality and character.</p>
+            </div>
+            <div id="residence-content-slide-8" class="carousel-content-section" style="display: none;">
+                <p data-i18n="narrativeSlide9">The blue-tiled bathroom with its recessed ceiling and natural light, is extremely spacious, featuring a walk-in shower, toilet-bidet, and ventilating fans.</p>
+            </div>
+            <div id="residence-content-slide-9" class="carousel-content-section" style="display: none;">
+                <p data-i18n="narrativeSlide10">The marble stairway connecting the third and fourth floors features textured plaster walls, an arched ceiling, and a handrail; and the alcove sitting area at the base of the stairs provides natural light, making this transition area especially inviting.</p>
+            </div>
+            <div id="residence-content-slide-10" class="carousel-content-section" style="display: none;">
+                <p data-i18n="narrativeSlide11">The top floor bedroom features a marble floor, exposed wooden beams, and windows and doors to the private, rooftop terrace. A small window offers a view of castle ruins; and a laundry area with a sink and closet make this space perfectly practical.</p>
+            </div>
+            <div id="residence-content-slide-11" class="carousel-content-section" style="display: none;">
+                <p data-i18n="narrativeSlide12">The private, rooftop terrace features beautiful traditional Sicilian tile work and a terra cotta bench, creating an inviting outdoor living space. The covered awning provides shelter while maintaining the open-air experience and incredible views.</p>
+            </div>
+            <div id="residence-content-slide-12" class="carousel-content-section" style="display: none;">
+                <p data-i18n="narrativeSlide13">The rooftop terrace includes a cooking and prep area, which is plumbed for water and gas, making it fully functional for outdoor entertaining. It provides stunning views extending across Isnello, its many churches, and the castle ruins.</p>
+            </div>
+            <div id="residence-content-slide-13" class="carousel-content-section" style="display: none;">
+                <p data-i18n="narrativeSlide14">Handpainted majolica ceramic tiles depicting St. George slaying a dragon, showcase one of the region's rich artistic traditions and the rooftop offers enjoyable views of Isnello's village homes.</p>
+            </div>
+            <div id="residence-content-slide-14" class="carousel-content-section" style="display: none;">
+                <p data-i18n="narrativeSlide15">Incredible nighttime views from the terrace reveal Isnello in a different light—illuminated streets and the silhouette of the forest and mountains against the evening sky. It's a lovely place to gather and absorb the nighttime village character.</p>
+            </div>
+            </div>
+
+            <!-- Cesare Battisti Stats -->
+            <div class="stats-grid mb-5">
+                <div class="stat-item" style="cursor: pointer;" id="main-residence-area" data-metric="141" data-imperial="1518">
+                    <div class="stat-value" id="main-residence-area-value">141 m²</div>
+                    <div class="stat-label" data-i18n="statAreaLabel">Area</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" data-i18n="statFloors">4</div>
+                    <div class="stat-label" data-i18n="statFloorsLabel">Floors</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">2</div>
+                    <div class="stat-label" data-i18n="statBedroomsLabel">Bedrooms</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">2</div>
+                    <div class="stat-label" data-i18n="statBathsLabel">Baths</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">2020</div>
+                    <div class="stat-label" data-i18n="statRenovatedLabel">Renovated</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" data-i18n="statLocation">Isnello</div>
+                    <div class="stat-label" data-i18n="statLocationLabel">Location</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="stat-budget-main-residence">0€</div>
+                    <div class="stat-label" data-i18n="statBudgetLabel">Budget</div>
+                </div>
+            </div>
+
+            <!-- Cesare Battisti Budget Section -->
+            <div class="budget-section mb-5 pt-2 border-t border-stone-200">
+            <div class="text-center mb-4">
+                <span class="floor-badge" style="font-size: 1rem; padding: 0.5rem 1rem;" data-i18n="plannedImprovementsTitle">Planned Improvements</span>
+            </div>
+            
+            <div class="property-card mb-5">
+                <div class="component-row" data-budget="2000">
+                    <div class="component-content">
+                        <div class="improvement-toggle" tabindex="0" role="button">
+                            <span class="toggle-icon">+</span>
+                            <h3 class="text-xl font-semibold text-stone-800 mb-2" style="color: #A52A2A; margin: 0;" data-i18n="propertyFloorGround">Ground Floor</h3>
+                        </div>
+                        <div class="improvement-details collapsed">
+                            <p class="text-stone-700 leading-relaxed text-lg" data-i18n="propertyFloorGroundDesc">Upgrade marble stairs to second floor.</p>
+                        </div>
+                    </div>
+                    <div class="budget-amount" data-eur-amount="2000" data-current-currency="EUR">2.000€</div>
+                </div>
+
+                <div class="component-row" data-budget="3000">
+                    <div class="component-content">
+                        <div class="improvement-toggle" tabindex="0" role="button">
+                            <span class="toggle-icon">+</span>
+                            <h3 class="text-xl font-semibold text-stone-800 mb-2" style="color: #A52A2A; margin: 0;" data-i18n="propertyFloorPrimo">Second Floor</h3>
+                        </div>
+                        <div class="improvement-details collapsed">
+                            <p class="text-stone-700 leading-relaxed text-lg" data-i18n="propertyFloorPrimoDesc">Rust-proof and paint metal balcony frame, replace light fixture in office area, upgrade market stairs to third floor, replace alcove window and bathroom window.</p>
+                        </div>
+                    </div>
+                    <div class="budget-amount" data-eur-amount="3000" data-current-currency="EUR">3.000€</div>
+                </div>
+
+                <div class="component-row" data-budget="1500">
+                    <div class="component-content">
+                        <div class="improvement-toggle" tabindex="0" role="button">
+                            <span class="toggle-icon">+</span>
+                            <h3 class="text-xl font-semibold text-stone-800 mb-2" style="color: #A52A2A; margin: 0;" data-i18n="propertyFloorSecondo">Third Floor</h3>
+                        </div>
+                        <div class="improvement-details collapsed">
+                            <p class="text-stone-700 leading-relaxed text-lg" data-i18n="propertyFloorSecondoDesc">Rust-proof and paint metal balcony frame, replace bathroom window, and window-door, fix grout in kitchen.</p>
+                        </div>
+                    </div>
+                    <div class="budget-amount" data-eur-amount="1500" data-current-currency="EUR">1.500€</div>
+                </div>
+
+                <div class="component-row" data-budget="2000">
+                    <div class="component-content">
+                        <div class="improvement-toggle" tabindex="0" role="button">
+                            <span class="toggle-icon">+</span>
+                            <h3 class="text-xl font-semibold text-stone-800 mb-2" style="color: #A52A2A; margin: 0;" data-i18n="propertyFloorTerzo">Fourth Floor</h3>
+                        </div>
+                        <div class="improvement-details collapsed">
+                            <p class="text-stone-700 leading-relaxed text-lg" data-i18n="propertyFloorTerzoDesc">Replace door to terrace, install BBQ in terrace, rust-proof and paint metal curtain frame.</p>
+                        </div>
+                    </div>
+                    <div class="budget-amount" data-eur-amount="2000" data-current-currency="EUR">2.000€</div>
+                </div>
+
+                <div class="component-row" data-budget="7000">
+                    <div class="component-content">
+                        <div class="improvement-toggle" tabindex="0" role="button">
+                            <span class="toggle-icon">+</span>
+                            <h3 class="text-xl font-semibold text-stone-800 mb-2" style="color: #A52A2A; margin: 0;" data-i18n="propertyExteriorMain">Exterior</h3>
+                        </div>
+                        <div class="improvement-details collapsed">
+                            <p class="text-stone-700 leading-relaxed text-lg" data-i18n="propertyExteriorMainDesc">Upgrade stonework at entry, replace entry door.</p>
+                        </div>
+                    </div>
+                    <div class="budget-amount" data-eur-amount="7000" data-current-currency="EUR">7.000€</div>
+                </div>
+
+                <div class="budget-total">
+                    <span class="budget-total-label" data-i18n="budgetTotalMain">Total:</span>
+                    <span class="budget-total-amount" id="total-main-residence">0€</span>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- End First Column -->
+        
+        <!-- Don Bosco Studio Carousel -->
+        <div class="restoration-column">
+            <div class="text-center mb-4">
+                <span class="floor-badge" style="font-size: 1rem; padding: 0.5rem 1rem;">Via Don Bosco, 5</span>
+            </div>
+            
+            <div class="carousel-section">
+            <div class="carousel-container rounded-sm overflow-hidden">
+                <div class="carousel-track" id="donbosco-carousel-track">
+                <div class="carousel-item">
+                    <img src="Don Bosco_Entrance.JPG" alt="Don Bosco Entrance" class="carousel-image" style="object-fit: contain; background-color: #faf8f5; object-position: center;" onerror="this.onerror=null; this.src=''; this.style.display='none'; this.parentElement.querySelector('.image-placeholder').style.display='flex';">
+                    <div class="image-placeholder rounded-sm carousel-image" style="display: none; position: absolute; top: 0; left: 0; right: 0;"><span>Don Bosco Entrance</span></div>
+                    <div class="image-counter">1 / 3</div>
+                    <div class="carousel-caption" data-i18n="restorationCaption16">Rear Entrance</div>
+                </div>
+                <div class="carousel-item">
+                    <img src="Don Bosco_Entrance2.JPG" alt="Don Bosco Entrance 2" class="carousel-image" style="object-fit: contain !important; background-color: #faf8f5; object-position: center !important; height: 500px !important; min-height: 500px !important; max-height: 500px !important; width: auto !important; max-width: none !important; display: block !important; flex-shrink: 0 !important;" onerror="this.onerror=null; this.src=''; this.style.display='none'; this.parentElement.querySelector('.image-placeholder').style.display='flex';">
+                    <div class="image-placeholder rounded-sm carousel-image" style="display: none; position: absolute; top: 0; left: 0; right: 0;"><span>Don Bosco Entrance 2</span></div>
+                    <div class="image-counter">2 / 3</div>
+                    <div class="carousel-caption" data-i18n="restorationCaption17">Don Bosco Studio — Entrance</div>
+                </div>
+                <div class="carousel-item">
+                    <img src="Don Bosco_Interior.JPG" alt="Don Bosco Interior" class="carousel-image" style="object-fit: contain; background-color: #faf8f5; object-position: center;" onerror="this.onerror=null; this.src=''; this.style.display='none'; this.parentElement.querySelector('.image-placeholder').style.display='flex';">
+                    <div class="image-placeholder rounded-sm carousel-image" style="display: none; position: absolute; top: 0; left: 0; right: 0;"><span>Don Bosco Interior</span></div>
+                    <div class="image-counter">3 / 3</div>
+                    <div class="carousel-caption" data-i18n="restorationCaption18">Don Bosco Studio — Interior</div>
+                </div>
+            </div>
+            <div class="carousel-nav-container">
+                <button class="carousel-nav prev" id="donbosco-carousel-prev">‹</button>
+                <div class="carousel-dots" id="donbosco-carousel-dots"></div>
+                <button class="carousel-nav next" id="donbosco-carousel-next">›</button>
+            </div>
+            </div>
+            </div>
+        
+            <!-- Don Bosco Studio Narrative Content -->
+            <div id="donbosco-carousel-content" class="narrative-content space-y-6 text-stone-700 leading-relaxed text-lg mb-4">
+            <div id="donbosco-content-slide-0" class="carousel-content-section">
+                <p data-i18n="narrativeSlide16">Extensive stonework and a restored facade create an independent, legal entrance that maintain the historic character of this ground-floor creative, contemplative studio space.</p>
+            </div>
+            <div id="donbosco-content-slide-1" class="carousel-content-section" style="display: none;">
+                <p data-i18n="narrativeSlide17">A private stone patio is perfect for a bistro table and chairs, and a wood-fired pizza oven. This outdoor space extends and complements the studio, making it ideal for music, painting, or writing.</p>
+            </div>
+            <div id="donbosco-content-slide-2" class="carousel-content-section" style="display: none;">
+                <p data-i18n="narrativeSlide18">A natural exposed wooden beam ceiling dominates the studio space, which is plumbed for a toilet and sink. The studio will feature tiled floors and textured plaster walls, a closet, sitting bench, and a pellet stove making this a truly creative, contemplative space with privacy and independent access to the historic center of Isnello.</p>
+            </div>
+            </div>
+
+            <!-- Don Bosco Stats -->
+            <div class="stats-grid mb-5">
+                <div class="stat-item" style="cursor: pointer;" id="don-bosco-area" data-metric="24" data-imperial="258">
+                    <div class="stat-value" id="don-bosco-area-value">24 m²</div>
+                    <div class="stat-label" data-i18n="statAreaLabel">Area</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">1</div>
+                    <div class="stat-label" data-i18n="statFloorsLabel">Floors</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">Studio</div>
+                    <div class="stat-label" data-i18n="statBedroomsLabel">Bedrooms</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">1/2</div>
+                    <div class="stat-label" data-i18n="statBathsLabel">Baths</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">2026</div>
+                    <div class="stat-label" data-i18n="statRenovatedLabel">Renovated</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" data-i18n="statLocation">Isnello</div>
+                    <div class="stat-label" data-i18n="statLocationLabel">Location</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="stat-budget-don-bosco">0€</div>
+                    <div class="stat-label" data-i18n="statBudgetLabel">Budget</div>
+                </div>
+            </div>
+
+            <!-- Don Bosco Budget Section -->
+            <div class="budget-section mb-5 pt-2 border-t border-stone-200">
+            <div class="text-center mb-4">
+                <span class="floor-badge" style="font-size: 1rem; padding: 0.5rem 1rem;" data-i18n="plannedImprovementsTitle">Planned Improvements</span>
+            </div>
+            
+            <div class="property-card mb-5">
+                <div class="component-row" data-budget="15000">
+                    <div class="component-content">
+                        <div class="improvement-toggle" tabindex="0" role="button">
+                            <span class="toggle-icon">+</span>
+                            <h3 class="text-xl font-semibold text-stone-800 mb-2" style="color: #A52A2A; margin: 0;" data-i18n="propertyInteriorDonBosco">Interior</h3>
+                        </div>
+                        <div class="improvement-details collapsed">
+                            <p class="text-stone-700 leading-relaxed text-lg" data-i18n="propertyInteriorDonBoscoDesc">Tile floors, plaster and paint walls, install toilet-bidet and sink, install pellet stove, update light fixtures, replace interior door to Cesare Battisti.</p>
+                        </div>
+                    </div>
+                    <div class="budget-amount" data-eur-amount="15000" data-current-currency="EUR">15.000€</div>
+                </div>
+
+                <div class="component-row" data-budget="10000">
+                    <div class="component-content">
+                        <div class="improvement-toggle" tabindex="0" role="button">
+                            <span class="toggle-icon">+</span>
+                            <h3 class="text-xl font-semibold text-stone-800 mb-2" style="color: #A52A2A; margin: 0;" data-i18n="propertyExteriorDonBosco">Exterior</h3>
+                        </div>
+                        <div class="improvement-details collapsed">
+                            <p class="text-stone-700 leading-relaxed text-lg" data-i18n="propertyExteriorDonBoscoDesc">Update stonework and drainage pipes, tighten electrical cables, level patio, install wood burning pizza oven, install door light and doorbell.</p>
+                        </div>
+                    </div>
+                    <div class="budget-amount" data-eur-amount="10000" data-current-currency="EUR">10.000€</div>
+                </div>
+
+                <div class="budget-total">
+                    <span class="budget-total-label" data-i18n="budgetTotalDonBosco">Total:</span>
+                    <span class="budget-total-amount" id="total-don-bosco">0€</span>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- End Second Column -->
+        
+        </div>
+        <!-- End Grid Container -->
+        
+        <!-- Exchange Rate Footnote -->
+        <div class="max-w-7xl mx-auto px-6 py-5">
+            <div class="exchange-rate-footnote" id="exchange-rate-footnote">
+                <p>Exchange rates as of <span id="exchange-rate-date"></span>: 1 EUR = <span id="eur-to-usd-rate"></span> USD | 1 USD = <span id="usd-to-eur-rate"></span> EUR</p>
+            </div>
+        </div>
+
+    </section>
+
+    <footer class="max-w-5xl mx-auto px-6 py-5 border-t border-stone-200 mt-0">
+        <div class="text-center">
+            <img src="SiciliaBedda_Logo.PNG" alt="Sicilia Bedda" class="mx-auto" style="height: 120px;" />
+            <p class="mt-4 text-stone-600 text-sm">siciliabedda.com</p>
+            <p class="mt-2 text-stone-500 text-xs" data-i18n="footerOperatedBy">Operated by Desert Cove Ventures, LLC</p>
+        </div>
+    </footer>
+
+    <script src="language.js"></script>
+    <script>
+        // Ensure translations are applied on mobile after page fully loads
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                if (typeof window.updatePageLanguage === 'function') {
+                    const currentLang = localStorage.getItem('siciliabedda-lang') || 'en';
+                    window.updatePageLanguage(currentLang);
+                }
+            }, 300);
+        });
+        
+        // Principal Residence Carousel
+        let currentResidenceSlide = 0;
+        const totalResidenceSlides = 15;
+        const residenceTrack = document.getElementById('residence-carousel-track');
+        const residencePrevBtn = document.getElementById('residence-carousel-prev');
+        const residenceNextBtn = document.getElementById('residence-carousel-next');
+        const residenceDotsContainer = document.getElementById('residence-carousel-dots');
+        for (let i = 0; i < totalResidenceSlides; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+            dot.addEventListener('click', () => goToResidenceSlide(i));
+            residenceDotsContainer.appendChild(dot);
+        }
+        function updateResidenceCarousel() {
+            residenceTrack.style.transform = `translateX(-${currentResidenceSlide * 100}%)`;
+            document.querySelectorAll('#residence-carousel-dots .carousel-dot').forEach((d, i) => d.classList.toggle('active', i === currentResidenceSlide));
+            // Update image counters
+            document.querySelectorAll('#residence-carousel-track .image-counter').forEach((counter, i) => {
+                counter.textContent = `${i + 1} / ${totalResidenceSlides}`;
+                counter.style.display = i === currentResidenceSlide ? 'block' : 'none';
+            });
+            // Update narrative visibility based on current slide
+            document.querySelectorAll('#residence-carousel-content .carousel-content-section').forEach((section, i) => {
+                section.style.display = i === currentResidenceSlide ? 'block' : 'none';
+            });
+        }
+        function goToResidenceSlide(i) { currentResidenceSlide = i; updateResidenceCarousel(); }
+        residencePrevBtn.addEventListener('click', () => { currentResidenceSlide = (currentResidenceSlide - 1 + totalResidenceSlides) % totalResidenceSlides; updateResidenceCarousel(); });
+        residenceNextBtn.addEventListener('click', () => { currentResidenceSlide = (currentResidenceSlide + 1) % totalResidenceSlides; updateResidenceCarousel(); });
+        updateResidenceCarousel();
+
+        // Don Bosco Studio Carousel
+        let currentDonBoscoSlide = 0;
+        const totalDonBoscoSlides = 3;
+        const donBoscoTrack = document.getElementById('donbosco-carousel-track');
+        const donBoscoPrevBtn = document.getElementById('donbosco-carousel-prev');
+        const donBoscoNextBtn = document.getElementById('donbosco-carousel-next');
+        const donBoscoDotsContainer = document.getElementById('donbosco-carousel-dots');
+        for (let i = 0; i < totalDonBoscoSlides; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+            dot.addEventListener('click', () => goToDonBoscoSlide(i));
+            donBoscoDotsContainer.appendChild(dot);
+        }
+        function updateDonBoscoCarousel() {
+            donBoscoTrack.style.transform = `translateX(-${currentDonBoscoSlide * 100}%)`;
+            document.querySelectorAll('#donbosco-carousel-dots .carousel-dot').forEach((d, i) => d.classList.toggle('active', i === currentDonBoscoSlide));
+            // Update image counters
+            document.querySelectorAll('#donbosco-carousel-track .image-counter').forEach((counter, i) => {
+                counter.textContent = `${i + 1} / ${totalDonBoscoSlides}`;
+                counter.style.display = i === currentDonBoscoSlide ? 'block' : 'none';
+            });
+            // Update narrative visibility based on current slide
+            document.querySelectorAll('#donbosco-carousel-content .carousel-content-section').forEach((section, i) => {
+                section.style.display = i === currentDonBoscoSlide ? 'block' : 'none';
+            });
+        }
+        function goToDonBoscoSlide(i) { currentDonBoscoSlide = i; updateDonBoscoCarousel(); }
+        donBoscoPrevBtn.addEventListener('click', () => { currentDonBoscoSlide = (currentDonBoscoSlide - 1 + totalDonBoscoSlides) % totalDonBoscoSlides; updateDonBoscoCarousel(); });
+        donBoscoNextBtn.addEventListener('click', () => { currentDonBoscoSlide = (currentDonBoscoSlide + 1) % totalDonBoscoSlides; updateDonBoscoCarousel(); });
+        updateDonBoscoCarousel();
+        
+        // Area toggle functionality - synchronized across all area tiles
+        let isMetric = true; // Shared state for all area tiles
+        function formatWithCommas(n) {
+            return Number(n).toLocaleString();
+        }
+        function updateAllAreaTiles() {
+            const areas = [
+                { elementId: 'main-residence-area', valueId: 'main-residence-area-value' },
+                { elementId: 'don-bosco-area', valueId: 'don-bosco-area-value' }
+            ];
+            areas.forEach(area => {
+                const areaElement = document.getElementById(area.elementId);
+                const valueEl = document.getElementById(area.valueId);
+                if (areaElement && valueEl) {
+                    if (isMetric) {
+                        valueEl.textContent = formatWithCommas(areaElement.dataset.metric) + ' m²';
+                    } else {
+                        valueEl.textContent = formatWithCommas(areaElement.dataset.imperial) + ' ft²';
+                    }
+                }
+            });
+        }
+        // Set up click handlers for all area tiles
+        ['main-residence-area', 'don-bosco-area'].forEach(elementId => {
+            const areaElement = document.getElementById(elementId);
+            if (areaElement) {
+                areaElement.addEventListener('click', () => {
+                    isMetric = !isMetric;
+                    updateAllAreaTiles();
+                });
+            }
+        });
+        // Initialize all area tiles to metric
+        updateAllAreaTiles();
+        
+        // Budget calculation function
+        let exchangeRate = null;
+        let globalBudgetCurrency = 'EUR'; // Global currency state for all budgets
+        
+        // Fetch exchange rate
+        async function fetchExchangeRate() {
+            try {
+                const response = await fetch('https://api.exchangerate-api.com/v4/latest/EUR');
+                const data = await response.json();
+                exchangeRate = data.rates.USD;
+                
+                // Update footnote with exchange rates and date
+                updateExchangeRateFootnote();
+            } catch (error) {
+                console.error('Error fetching exchange rate:', error);
+                // Fallback to approximate rate if API fails
+                exchangeRate = 1.08;
+                updateExchangeRateFootnote();
+            }
+        }
+        
+        // Update exchange rate footnote
+        function updateExchangeRateFootnote() {
+            const dateEl = document.getElementById('exchange-rate-date');
+            const eurToUsdEl = document.getElementById('eur-to-usd-rate');
+            const usdToEurEl = document.getElementById('usd-to-eur-rate');
+            
+            if (dateEl && eurToUsdEl && usdToEurEl) {
+                // Format date
+                const today = new Date();
+                const dateStr = today.toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                });
+                dateEl.textContent = dateStr;
+                
+                // Format exchange rates
+                const rate = exchangeRate || 1.08;
+                eurToUsdEl.textContent = rate.toFixed(4);
+                usdToEurEl.textContent = (1 / rate).toFixed(4);
+            }
+        }
+        
+        // Initialize exchange rate
+        fetchExchangeRate();
+        
+        function parseBudgetAmount(element) {
+            // First check if we have stored EUR amount
+            if (element.dataset && element.dataset.eurAmount) {
+                return parseFloat(element.dataset.eurAmount);
+            }
+            
+            const text = element.textContent || element.innerText;
+            // Try EUR format first (with periods as thousands separator)
+            let match = text.match(/([\d.]+)€/);
+            if (match) {
+                // Remove periods (thousands separators) and parse
+                return parseFloat(match[1].replace(/\./g, ''));
+            }
+            // Also try old format with Euro sign before amount
+            match = text.match(/€([\d.]+)/);
+            if (match) {
+                // Remove periods (thousands separators) and parse
+                return parseFloat(match[1].replace(/\./g, ''));
+            }
+            // Try USD format (with commas as thousands separator)
+            match = text.match(/\$([\d,]+)/);
+            if (match) {
+                const usdAmount = parseFloat(match[1].replace(/,/g, ''));
+                // Convert back to EUR
+                return usdAmount / (exchangeRate || 1.08);
+            }
+            return 0;
+        }
+        
+        function formatBudgetAmount(amount, currency = 'EUR') {
+            if (currency === 'USD') {
+                const usdAmount = Math.round(amount * (exchangeRate || 1.08));
+                return '$' + usdAmount.toLocaleString('en-US', { maximumFractionDigits: 0, minimumFractionDigits: 0 });
+            } else {
+                // Use period as thousands separator for EUR (whole numbers only)
+                const whole = Math.round(amount);
+                const formatted = whole.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+                return formatted + '€';
+            }
+        }
+        
+        function calculateBudgetTotals() {
+            
+            // Calculate Cesare Battisti total
+            const mainResidenceTotalEl = document.getElementById('total-main-residence');
+            if (mainResidenceTotalEl) {
+                const mainResidenceCard = mainResidenceTotalEl.closest('.property-card');
+                if (mainResidenceCard) {
+                    const mainResidenceRows = mainResidenceCard.querySelectorAll('.component-row');
+                    let mainResidenceTotal = 0;
+                    mainResidenceRows.forEach(row => {
+                        const budgetEl = row.querySelector('.budget-amount');
+                        if (budgetEl) {
+                            mainResidenceTotal += parseBudgetAmount(budgetEl);
+                        }
+                    });
+                    mainResidenceTotalEl.textContent = formatBudgetAmount(mainResidenceTotal, globalBudgetCurrency);
+                    mainResidenceTotalEl.dataset.eurAmount = mainResidenceTotal;
+                    mainResidenceTotalEl.dataset.currentCurrency = globalBudgetCurrency;
+                    // Update budget stat tile
+                    const budgetStatEl = document.getElementById('stat-budget-main-residence');
+                    if (budgetStatEl) {
+                        budgetStatEl.textContent = formatBudgetAmount(mainResidenceTotal, globalBudgetCurrency);
+                        budgetStatEl.dataset.eurAmount = mainResidenceTotal;
+                        budgetStatEl.dataset.currentCurrency = globalBudgetCurrency;
+                    }
+                }
+            }
+            
+            // Calculate Don Bosco total
+            const donBoscoTotalEl = document.getElementById('total-don-bosco');
+            if (donBoscoTotalEl) {
+                const donBoscoCard = donBoscoTotalEl.closest('.property-card');
+                if (donBoscoCard) {
+                    const donBoscoRows = donBoscoCard.querySelectorAll('.component-row');
+                    let donBoscoTotal = 0;
+                    donBoscoRows.forEach(row => {
+                        const budgetEl = row.querySelector('.budget-amount');
+                        if (budgetEl) {
+                            donBoscoTotal += parseBudgetAmount(budgetEl);
+                        }
+                    });
+                    donBoscoTotalEl.textContent = formatBudgetAmount(donBoscoTotal, globalBudgetCurrency);
+                    donBoscoTotalEl.dataset.eurAmount = donBoscoTotal;
+                    donBoscoTotalEl.dataset.currentCurrency = globalBudgetCurrency;
+                    // Update budget stat tile
+                    const budgetStatEl = document.getElementById('stat-budget-don-bosco');
+                    if (budgetStatEl) {
+                        budgetStatEl.textContent = formatBudgetAmount(donBoscoTotal, globalBudgetCurrency);
+                        budgetStatEl.dataset.eurAmount = donBoscoTotal;
+                        budgetStatEl.dataset.currentCurrency = globalBudgetCurrency;
+                    }
+                }
+            }
+            
+        }
+        
+        // Initialize budget totals
+        calculateBudgetTotals();
+        
+        // Function to convert all budget amounts to a specific currency
+        async function convertAllBudgets(targetCurrency) {
+            if (!exchangeRate) {
+                await fetchExchangeRate();
+            }
+            
+            globalBudgetCurrency = targetCurrency;
+            
+            // Update all budget amounts
+            document.querySelectorAll('.budget-amount, .budget-total-amount, #stat-budget-main-residence, #stat-budget-don-bosco').forEach(element => {
+                let eurAmount = parseFloat(element.dataset.eurAmount);
+                if (!eurAmount || eurAmount === 0) {
+                    // Try to parse from current text if dataset not set
+                    eurAmount = parseBudgetAmount(element);
+                    if (!eurAmount || eurAmount === 0) return;
+                    element.dataset.eurAmount = eurAmount.toString();
+                }
+                
+                element.textContent = formatBudgetAmount(eurAmount, targetCurrency);
+                element.dataset.currentCurrency = targetCurrency;
+            });
+        }
+        
+        // Set up click handlers for budget amounts to toggle EUR/USD globally
+        function setupBudgetClickHandlers() {
+            document.querySelectorAll('.budget-amount, .budget-total-amount, #stat-budget-main-residence, #stat-budget-don-bosco').forEach(element => {
+                // Skip if already has click handler
+                if (element.dataset.hasClickHandler) return;
+                element.dataset.hasClickHandler = 'true';
+                
+                // Store original EUR amount if not already stored
+                if (!element.dataset.eurAmount) {
+                    const amount = parseBudgetAmount(element);
+                    if (amount > 0) {
+                        element.dataset.eurAmount = amount.toString();
+                        element.dataset.currentCurrency = globalBudgetCurrency;
+                    }
+                }
+                
+                element.addEventListener('click', async function(e) {
+                    e.stopPropagation();
+                    
+                    // Toggle global currency
+                    const newCurrency = globalBudgetCurrency === 'EUR' ? 'USD' : 'EUR';
+                    await convertAllBudgets(newCurrency);
+                    
+                    // Recalculate totals to ensure they're in sync
+                    calculateBudgetTotals();
+                });
+            });
+        }
+        
+        // Initialize budget click handlers after a short delay to ensure DOM is ready
+        setTimeout(setupBudgetClickHandlers, 500);
+        
+        // Expandable Planned Improvements - toggle +/- on click
+        document.querySelectorAll('.improvement-toggle').forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const details = this.nextElementSibling;
+                const icon = this.querySelector('.toggle-icon');
+                if (details && details.classList.contains('improvement-details')) {
+                    details.classList.toggle('collapsed');
+                    details.classList.toggle('expanded');
+                    icon.textContent = details.classList.contains('expanded') ? '\u2212' : '+';
+                }
+            });
+            toggle.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+        });
+        
+        // Recalculate when language changes (in case budget amounts are translated)
+        const origUpdatePageLanguage = window.updatePageLanguage;
+        window.updatePageLanguage = function(lang) {
+            if (origUpdatePageLanguage) origUpdatePageLanguage(lang);
+            setTimeout(() => {
+                calculateBudgetTotals();
+                setupBudgetClickHandlers();
+            }, 100); // Small delay to allow translation to complete
+        };
+        
+        (function() {
+            const page = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if ((link.getAttribute('href') === page) || (page === '' && link.getAttribute('href') === 'index.html')) link.classList.add('active');
+            });
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+#!/bin/sh
+# Runs fix-git-refs.ps1 before every push so invalid refs (e.g. "master 2") don't break push.
+# Installed by scripts/install-git-hooks.ps1
+root=$(git rev-parse --show-toplevel)
+exec powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$root/scripts/fix-git-refs.ps1"

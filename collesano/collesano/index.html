@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sicily - Sicilia Bedda</title>
+    <base href="/">
+    <title>Collesano - Sicilia Bedda</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="translations-data.js"></script>
+    <script src="/translations-data.js"></script>
     <script>window.translations = window.translations || (typeof translations !== 'undefined' ? translations : null);</script>
     <style>
         body { font-family: 'Georgia Pro', Georgia, 'Times New Roman', serif; background-color: #faf8f5; }
@@ -49,24 +50,24 @@
     <header class="border-b border-stone-200 bg-white/90 backdrop-blur-sm md:sticky md:top-0 z-40">
         <div class="max-w-4xl mx-auto px-6 py-4">
             <div class="flex flex-col items-center mb-4">
-                <a href="index.html" class="text-center"><h1 class="text-4xl md:text-5xl mb-2 leading-tight" style="font-family: 'Trajan Pro', 'Times New Roman', Georgia, serif; font-weight: 400; letter-spacing: 0.15em; color: #8B4513;" data-i18n="heroTitle">SICILIA BEDDA</h1></a>
+                <a href="/" class="text-center"><h1 class="text-4xl md:text-5xl mb-2 leading-tight" style="font-family: 'Trajan Pro', 'Times New Roman', Georgia, serif; font-weight: 400; letter-spacing: 0.15em; color: #8B4513;" data-i18n="heroTitle">SICILIA BEDDA</h1></a>
             </div>
             <nav class="flex flex-wrap justify-center gap-4 text-sm text-stone-700 items-center">
-                <a href="index.html" class="nav-link hover:text-stone-900" data-i18n="navHome">Home</a>
+                <a href="/" class="nav-link hover:text-stone-900" data-i18n="navHome">Home</a>
                 <div class="about-dropdown">
                     <button type="button" class="about-dropdown-button nav-link hover:text-stone-900" id="about-dropdown-button" aria-haspopup="true" aria-expanded="false"><span data-i18n="navAbout">About</span></button>
                     <div class="about-dropdown-menu" id="about-dropdown-menu" role="menu">
-                        <a href="about.html" class="about-dropdown-item" role="menuitem" data-i18n="navOurFounder">Our Founder</a>
-                        <a href="sicily.html" class="about-dropdown-item" role="menuitem" data-i18n="navSicily">Sicily</a>
-                        <a href="parco-madonie.html" class="about-dropdown-item" role="menuitem" data-i18n="navParcoMadonie">Parco delle Madonie</a>
-                        <a href="isnello.html" class="about-dropdown-item" role="menuitem" data-i18n="navIsnello">Isnello</a>
-                        <a href="collesano.html" class="about-dropdown-item" role="menuitem" data-i18n="navCollesano">Collesano</a>
-                        <a href="castelbuono.html" class="about-dropdown-item" role="menuitem" data-i18n="navCastelbuono">Castelbuono</a>
+                        <a href="/about" class="about-dropdown-item" role="menuitem" data-i18n="navOurFounder">Our Founder</a>
+                        <a href="/sicily" class="about-dropdown-item" role="menuitem" data-i18n="navSicily">Sicily</a>
+                        <a href="/parco-madonie" class="about-dropdown-item" role="menuitem" data-i18n="navParcoMadonie">Parco delle Madonie</a>
+                        <a href="/isnello" class="about-dropdown-item" role="menuitem" data-i18n="navIsnello">Isnello</a>
+                        <a href="/collesano" class="about-dropdown-item" role="menuitem" data-i18n="navCollesano">Collesano</a>
+                        <a href="/castelbuono" class="about-dropdown-item" role="menuitem" data-i18n="navCastelbuono">Castelbuono</a>
                     </div>
                 </div>
-                <a href="current-restoration.html" class="nav-link hover:text-stone-900" data-i18n="navCurrentRestoration">Current Restorations</a>
-                <a href="support-cause.html" class="nav-link hover:text-stone-900" data-i18n="navSupportCause">Support Our Cause</a>
-                <a href="contact.html" class="nav-link hover:text-stone-900" data-i18n="navContact">Contact Us</a>
+                <a href="/current-restoration" class="nav-link hover:text-stone-900" data-i18n="navCurrentRestoration">Current Restorations</a>
+                <a href="/support" class="nav-link hover:text-stone-900" data-i18n="navSupportCause">Support Our Cause</a>
+                <a href="/contact" class="nav-link hover:text-stone-900" data-i18n="navContact">Contact Us</a>
                 <div class="language-dropdown">
                     <button type="button" class="language-trigger nav-link hover:text-stone-900" id="language-button" aria-haspopup="true" aria-expanded="false"><img src="https://flagcdn.com/w40/gb.png" alt="" id="current-flag" class="language-trigger-flag"><span id="current-language">English</span><span class="language-trigger-arrow" aria-hidden="true">▾</span></button>
                     <div class="language-menu" id="language-menu" role="menu">
@@ -82,31 +83,31 @@
     </header>
     <section class="max-w-5xl mx-auto px-6 py-8">
         <div class="rounded-sm overflow-hidden mb-6">
-            <img src="sicily.jpg" alt="Sicily" class="w-full" style="height: 500px; object-fit: cover;" onerror="this.style.display='none';">
+            <img src="/collesano.jpg" alt="Collesano" class="w-full" style="height: 500px; object-fit: cover;" onerror="this.style.display='none';">
         </div>
         <div class="space-y-5 text-stone-700 leading-relaxed text-lg max-w-3xl mx-auto">
-            <p data-i18n="sicilyPara1">Sicily is not a destination to check off a list. It is a place that asks you to slow down, to notice, to stay. The island holds layers of history—Greek temples, Norman cathedrals, Arab-influenced architecture, Baroque towns rebuilt after earthquakes. But more than monuments, Sicily offers something increasingly rare—a way of life that has not yet been fully commodified, a pace that follows seasons and relationships rather than algorithms, communities where people still know their neighbors.</p>
-            <p data-i18n="sicilyPara11" class="mt-5">Sicily holds seven UNESCO World Heritage Sites—from the ancient Greek theaters of Syracuse and Taormina to the Arab-Norman churches of Palermo, from the Baroque cities of the Val di Noto to the Aeolian Islands' volcanic landscapes. This extraordinary concentration of recognized cultural and natural heritage reflects millennia of civilizations that left their mark on the island, each contributing to the complex identity that makes Sicily unlike anywhere else in the Mediterranean.</p>
-            <p data-i18n="sicilyPara10" class="mt-5">What makes Sicily truly incredible is its refusal to be reduced to a single narrative. It is not just beautiful—it is layered, textured, and deeply human. The cuisine carries Phoenician, Arab, Norman, and Spanish influences. The architecture tells stories of conquest and coexistence. And the people, shaped by centuries of resilience, maintain a fierce pride in their land, their traditions, and their way of living.</p>
+            <p data-i18n="collesanoPara1">Collesano is a town where craft traditions remain deeply embedded in daily life. The village is particularly known for its ceramic artisans, whose workshops produce hand-painted tiles, decorative pottery, and architectural elements using techniques passed down through generations. These ceramics are not museum pieces—they are functional objects that fill local homes, adorn building facades, and connect contemporary life to centuries of Sicilian craftsmanship. The town has managed to sustain these traditions even as mass production and globalization have hollowed out craft economies elsewhere.</p>
+            <p data-i18n="collesanoPara4" class="mt-5">The Città della Ceramica is also surrounded by olive groves that produce some of the Madonie's finest oil. Small-scale producers here still harvest by hand, press within hours, and bottle oil that carries the distinct character of the terroir—peppery, grassy, with the minerality of mountain soil. This is not industrial agriculture. The groves are family operations, some centuries old, where knowledge of pruning, harvest timing, and milling is inherited rather than learned from manuals. The olive harvest each autumn becomes a communal event, drawing neighbors and extended families together in work that reinforces both economic ties and social bonds.</p>
+            <p data-i18n="collesanoPara3" class="mt-5">In recent years, Collesano has attracted a small but growing international community—artists, craftspeople, and remote workers drawn by the quality of life, affordability, and the vitality of local traditions. This influx has brought new energy without overwhelming the town's character. Newcomers often integrate into village life, learning Italian, supporting local businesses, and participating in festivals like the celebrated Collesano Cheese Festival, which brings together locals and visitors alike to enjoy traditional Sicilian cheeses and lively communal celebrations. The result is a community that remains authentically Sicilian while slowly becoming more cosmopolitan—a place where tradition and openness coexist rather than compete.</p>
         </div>
         <div class="facts-section max-w-3xl mx-auto mt-8">
             <h3 data-i18n="interestingFactsTitle">Interesting Facts</h3>
             <ul class="facts-list text-stone-700 space-y-2">
-                <li><span class="font-semibold" data-i18n="factArea">Area:</span> <span data-i18n="sicilyArea">25,711 km² (9,927 sq mi)</span></li>
-                <li><span class="font-semibold" data-i18n="factPopulation">Population:</span> <span data-i18n="sicilyPopulation">~5 million</span></li>
-                <li><span class="font-semibold" data-i18n="factUNESCO">UNESCO Sites:</span> <span data-i18n="sicilyUNESCO">7 World Heritage Sites</span></li>
-                <li><span class="font-semibold" data-i18n="factInfluences">Cultural Influences:</span> <span data-i18n="sicilyInfluences">Greek, Arab, Norman, Spanish</span></li>
+                <li><span class="font-semibold" data-i18n="factPopulation">Population:</span> <span data-i18n="collesanoPopulation">~4,000</span></li>
+                <li><span class="font-semibold" data-i18n="factElevation">Elevation:</span> <span data-i18n="collesanoElevation">468 m (1,535 ft)</span></li>
+                <li><span class="font-semibold" data-i18n="factProvince">Province:</span> <span data-i18n="collesanoProvince">Metropolitan City of Palermo</span></li>
+                <li><span class="font-semibold" data-i18n="factKnownFor">Known For:</span> <span data-i18n="collesanoKnownFor">Città della Ceramica; olive oil; Collesano Cheese Festival</span></li>
             </ul>
         </div>
     </section>
     <footer class="max-w-5xl mx-auto px-6 py-5 border-t border-stone-200 mt-0">
         <div class="text-center">
-            <img src="SiciliaBedda_Logo.PNG" alt="Sicilia Bedda" class="mx-auto" style="height: 120px;" />
+            <img src="/SiciliaBedda_Logo.PNG" alt="Sicilia Bedda" class="mx-auto" style="height: 120px;" />
             <p class="mt-4 text-stone-600 text-sm">siciliabedda.com</p>
             <p class="mt-2 text-stone-500 text-xs" data-i18n="footerOperatedBy">Operated by Desert Cove Ventures, LLC</p>
         </div>
     </footer>
-    <script src="language.js"></script>
-    <script>(function(){var p=window.location.pathname.split('/').pop()||'';document.querySelectorAll('.nav-link').forEach(function(l){if((l.getAttribute('href')||'').split('/').pop()===p)l.classList.add('active');});})();</script>
+    <script src="/language.js"></script>
+    <script>(function(){var p=window.location.pathname.split('/').filter(Boolean)[0]||'';document.querySelectorAll('.nav-link').forEach(function(l){var h=(l.getAttribute('href')||'').replace(/^\//,'').split('/')[0];if(h===p)l.classList.add('active');});})();</script>
 </body>
 </html>

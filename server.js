@@ -33,6 +33,23 @@ const currentRestorationPath = path.join(__dirname, 'current-restoration 12.html
 app.get('/current-restoration', (req, res) => res.sendFile(currentRestorationPath));
 app.get('/current-restoration.html', (req, res) => res.sendFile(currentRestorationPath));
 
+// Explicit routes for About sub-pages
+const collesanoPath = path.join(__dirname, 'collesano.html');
+app.get('/collesano', (req, res) => res.sendFile(collesanoPath));
+app.get('/collesano.html', (req, res) => res.sendFile(collesanoPath));
+const castelbuonoPath = path.join(__dirname, 'castelbuono.html');
+app.get('/castelbuono', (req, res) => res.sendFile(castelbuonoPath));
+app.get('/castelbuono.html', (req, res) => res.sendFile(castelbuonoPath));
+const sicilyPath = path.join(__dirname, 'sicily.html');
+app.get('/sicily', (req, res) => res.sendFile(sicilyPath));
+app.get('/sicily.html', (req, res) => res.sendFile(sicilyPath));
+const parcoMadoniePath = path.join(__dirname, 'parco-madonie.html');
+app.get('/parco-madonie', (req, res) => res.sendFile(parcoMadoniePath));
+app.get('/parco-madonie.html', (req, res) => res.sendFile(parcoMadoniePath));
+const isnelloPath = path.join(__dirname, 'isnello.html');
+app.get('/isnello', (req, res) => res.sendFile(isnelloPath));
+app.get('/isnello.html', (req, res) => res.sendFile(isnelloPath));
+
 // Serve static HTML, JS, CSS, and assets from current directory
 app.use(express.static(path.join(__dirname)));
 

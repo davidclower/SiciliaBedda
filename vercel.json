@@ -5,9 +5,10 @@
   "rewrites": [
     { "source": "/", "destination": "/index.html" },
     { "source": "/index.html", "destination": "/index.html" },
-    { "source": "/support", "destination": "/support-cause.html" },
-    { "source": "/support-cause", "destination": "/support-cause.html" },
-    { "source": "/support-cause.html", "destination": "/support-cause.html" },
+    { "source": "/collesano", "destination": "/collesano.html" },
+    { "source": "/collesano.html", "destination": "/collesano.html" },
+    { "source": "/castelbuono", "destination": "/castelbuono.html" },
+    { "source": "/castelbuono.html", "destination": "/castelbuono.html" },
     { "source": "/about", "destination": "/about.html" },
     { "source": "/about.html", "destination": "/about.html" },
     { "source": "/sicily", "destination": "/sicily.html" },
@@ -16,15 +17,13 @@
     { "source": "/parco-madonie.html", "destination": "/parco-madonie.html" },
     { "source": "/isnello", "destination": "/isnello.html" },
     { "source": "/isnello.html", "destination": "/isnello.html" },
-    { "source": "/collesano", "destination": "/collesano.html" },
-    { "source": "/collesano.html", "destination": "/collesano.html" },
-    { "source": "/castelbuono", "destination": "/castelbuono.html" },
-    { "source": "/castelbuono.html", "destination": "/castelbuono.html" },
-    { "source": "/contact", "destination": "/contact.html" },
-    { "source": "/contact.html", "destination": "/contact.html" },
     { "source": "/current-restoration", "destination": "/current-restoration.html" },
     { "source": "/current-restoration.html", "destination": "/current-restoration.html" },
-    { "source": "/(.*)", "destination": "/$1" }
+    { "source": "/support", "destination": "/support-cause.html" },
+    { "source": "/support-cause", "destination": "/support-cause.html" },
+    { "source": "/support-cause.html", "destination": "/support-cause.html" },
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/contact.html", "destination": "/contact.html" }
   ],
   "headers": [
     {

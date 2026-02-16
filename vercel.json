@@ -1,1 +1,43 @@
-{"version":2,"buildCommand":null,"outputDirectory":".","rewrites":[{"source":"/","destination":"/index.html"},{"source":"/support","destination":"/support-cause.html"},{"source":"/support-cause","destination":"/support-cause.html"},{"source":"/about.html","destination":"/about(1).html"},{"source":"/sicily.html","destination":"/sicily(1).html"},{"source":"/parco-madonie.html","destination":"/parco-madonie(1).html"},{"source":"/isnello.html","destination":"/isnello(1).html"},{"source":"/collesano","destination":"/collesano(1).html"},{"source":"/collesano.html","destination":"/collesano(1).html"},{"source":"/castelbuono","destination":"/castelbuono(1).html"},{"source":"/castelbuono.html","destination":"/castelbuono(1).html"},{"source":"/contact.html","destination":"/contact(1).html"},{"source":"/current-restoration","destination":"/current-restoration(1).html"},{"source":"/current-restoration.html","destination":"/current-restoration(1).html"},{"source":"/(.*)","destination":"/$1"}],"headers":[{"source":"/api/(.*)","headers":[{"key":"Access-Control-Allow-Origin","value":"*"},{"key":"Access-Control-Allow-Methods","value":"GET, POST, OPTIONS"},{"key":"Access-Control-Allow-Headers","value":"Content-Type"}]}],"functions":{"api/**/*.js":{"runtime":"nodejs18.x"}}}
+{
+  "version": 2,
+  "buildCommand": null,
+  "outputDirectory": ".",
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/index.html", "destination": "/index.html" },
+    { "source": "/collesano", "destination": "/collesano/index.html" },
+    { "source": "/collesano/", "destination": "/collesano/index.html" },
+    { "source": "/collesano.html", "destination": "/collesano/index.html" },
+    { "source": "/castelbuono", "destination": "/castelbuono/index.html" },
+    { "source": "/castelbuono/", "destination": "/castelbuono/index.html" },
+    { "source": "/castelbuono.html", "destination": "/castelbuono/index.html" },
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/about.html", "destination": "/about.html" },
+    { "source": "/sicily", "destination": "/sicily.html" },
+    { "source": "/sicily.html", "destination": "/sicily.html" },
+    { "source": "/parco-madonie", "destination": "/parco-madonie.html" },
+    { "source": "/parco-madonie.html", "destination": "/parco-madonie.html" },
+    { "source": "/isnello", "destination": "/isnello.html" },
+    { "source": "/isnello.html", "destination": "/isnello.html" },
+    { "source": "/current-restoration", "destination": "/current-restoration.html" },
+    { "source": "/current-restoration.html", "destination": "/current-restoration.html" },
+    { "source": "/support", "destination": "/support-cause.html" },
+    { "source": "/support-cause", "destination": "/support-cause.html" },
+    { "source": "/support-cause.html", "destination": "/support-cause.html" },
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/contact.html", "destination": "/contact.html" }
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET, POST, OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type" }
+      ]
+    }
+  ],
+  "functions": {
+    "api/**/*.js": { "runtime": "nodejs18.x" }
+  }
+}

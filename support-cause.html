@@ -5,11 +5,738 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Support Our Cause - Sicilia Bedda</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>body{font-family:'Georgia Pro',Georgia,'Times New Roman',serif;background:#faf8f5}</style>
+    <script>
+    (function(){
+      var done = function(){
+        window.translations = window.translations || (typeof translations !== 'undefined' ? translations : null);
+        if (!window.translations || !window.translations.en) {
+          window.translations = { en: { heroTitle: "SICILIA BEDDA", footerOperatedBy: "Operated by Desert Cove Ventures, LLC" }, it: { heroTitle: "SICILIA BEDDA", footerOperatedBy: "Gestito da Desert Cove Ventures, LLC" }, scn: {}, es: {}, fr: {} };
+        }
+        var s = document.createElement('script');
+        s.src = 'language.js';
+        s.onload = function(){ if (window.updatePageLanguage) { var lang = localStorage.getItem('siciliabedda-lang') || 'en'; window.updatePageLanguage(lang); } };
+        document.head.appendChild(s);
+      };
+      var s = document.createElement('script');
+      s.src = 'translations-data.js';
+      s.onload = s.onerror = function(){ done(); };
+      document.head.appendChild(s);
+    })();
+    </script>
+    <style>
+        body { font-family: 'Georgia Pro', Georgia, 'Times New Roman', serif; background-color: #faf8f5; }
+        h1, h2, h3 { font-family: 'Georgia Pro', Georgia, 'Times New Roman', serif; }
+        .image-placeholder { background: #e8e5df; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; color: #9a9288; font-size: 0.875rem; border: 1px dashed #c9c5bd; }
+        .language-dropdown { position: relative; }
+        .language-trigger { background: none; border: none; cursor: pointer; font: inherit; font-size: inherit; color: inherit; padding: 0.25rem 0; display: inline-flex; align-items: center; gap: 0.35rem; color: #44403c; border-left: 1px solid #e7e5e4; margin-left: 0.5rem; padding-left: 0.75rem; }
+        .language-trigger:hover { color: #1c1917; }
+        .language-trigger-flag { width: 20px; height: 15px; object-fit: cover; border-radius: 1px; }
+        .language-trigger-arrow { font-size: 0.65em; opacity: 0.8; }
+        .language-menu { position: absolute; top: 100%; right: 0; margin-top: 0.25rem; background: #fafaf9; border: 1px solid #e7e5e4; border-radius: 0.375rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08); min-width: 140px; z-index: 1000; display: none; }
+        .language-menu.active { display: block; }
+        .about-dropdown { position: relative; }
+        .about-dropdown-button { background: none; border: none; cursor: pointer; font: inherit; font-size: inherit; color: inherit; font-weight: 400; padding: 0; display: inline-flex; align-items: center; gap: 0.25rem; }
+        .about-dropdown-button:hover { color: #1c1917; }
+        .about-dropdown-menu { position: absolute; top: 100%; left: 0; margin-top: 2px; background: white; border: 1px solid #d1d5db; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); min-width: 200px; z-index: 1000; display: none; }
+        .about-dropdown-menu.active { display: block; }
+        .about-dropdown-item { display: block; padding: 0.5rem 1rem; min-height: 36px; font-size: 0.9375rem; color: #44403c; text-decoration: none; transition: background 0.15s; line-height: 1.4; }
+        .about-dropdown-item:hover { background: #A52A2A; color: white; }
+        .language-option { padding: 0.5rem 0.75rem; display: flex; align-items: center; gap: 0.5rem; cursor: pointer; font-size: 0.875rem; color: #44403c; transition: background 0.15s; }
+        .language-option:hover { background: #f5f5f4; color: #1c1917; }
+        .language-option img { width: 20px; height: 15px; object-fit: cover; border-radius: 1px; }
+        .nav-link { font-weight: 400; }
+        .collection-card { display: flex; flex-direction: column; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; position: relative; min-height: 0; }
+        .collection-image-wrap { height: 340px; flex-shrink: 0; overflow: hidden; border-radius: 8px 8px 0 0; background: #faf8f5; }
+        .collection-card .collection-image { border-radius: 8px 8px 0 0; flex-shrink: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; image-rendering: auto; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+        .collection-card:hover { transform: translateY(-4px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); }
+        .collection-image { width: 100%; height: 340px; object-fit: cover; object-position: center; }
+        .collection-image-table { object-fit: cover; object-position: center; background: #faf8f5; }
+        .collection-image-village { object-fit: cover; object-position: center; background: #faf8f5; }
+        .collection-image-artisan { object-fit: cover; object-position: center; background: #faf8f5; }
+        .collection-content { padding: 1.5rem; display: flex; flex-direction: column; flex: 1; min-height: 0; }
+        .collection-title { font-size: 1.25rem; font-weight: 600; color: #292524; margin-bottom: 0.75rem; text-align: center; }
+        .collection-header { display: flex; flex-direction: column; justify-content: flex-start; height: 420px; flex-shrink: 0; }
+        .collection-title { flex-shrink: 0; }
+        .collection-desc { color: #57534e; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem; flex: 1 1 auto; min-height: 0; overflow-y: auto; overflow-x: hidden; }
+        .collection-contents { color: #57534e; font-size: 0.875rem; line-height: 1.5; margin-bottom: 1rem; border-top: 1px solid #e8e5df; padding-top: 1rem; flex-shrink: 0; }
+        .collection-contents-title { font-weight: 600; color: #292524; margin-bottom: 0.5rem; font-size: 0.9rem; }
+        .collection-contents-list { list-style: none; padding: 0; margin: 0; }
+        .collection-contents-list li { margin-bottom: 0.4rem; padding-left: 1rem; position: relative; }
+        .collection-contents-list li:before { content: "•"; position: absolute; left: 0; color: #A52A2A; }
+        .collection-price { font-size: 1.5rem; font-weight: 600; color: #A52A2A; margin-bottom: 0.5rem; text-align: center; margin-top: auto; }
+        .support-amount { cursor: pointer; }
+        .exchange-rate-footnote { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #e7e5e0; text-align: center; font-size: 0.875rem; color: #78716c; line-height: 1.6; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 1000; overflow-y: auto; }
+        .modal.active { display: flex; align-items: center; justify-content: center; padding: 2rem; }
+        .modal-content { background: #faf8f5; max-width: 600px; width: 100%; max-height: 90vh; overflow-y: auto; border-radius: 8px; padding: 2rem; position: relative; }
+        .modal-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 2rem; color: #57534e; cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: background 0.3s ease; }
+        .modal-close:hover { background: #e8e5df; }
+        .checkout-form { display: flex; flex-direction: column; gap: 1rem; }
+        .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+        .form-group label { font-weight: 500; color: #292524; }
+        .form-group input, .form-group textarea { padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 4px; font-family: inherit; font-size: 1rem; }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: #A52A2A; }
+        .checkout-button { background: #A52A2A; color: white; padding: 0.75rem 2rem; border: none; border-radius: 4px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.3s ease; margin-top: 1rem; }
+        .checkout-button:hover { background: #b00d2a; }
+        .order-button { background: #A52A2A; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 4px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.3s ease; margin-top: 1rem; width: 100%; }
+        .order-button:hover { background: #b00d2a; }
+        .donation-level { background: white; border: 2px solid #e8e5df; border-radius: 8px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; }
+        .donation-level:hover { border-color: #A52A2A; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); }
+        .donation-level.selected { border-color: #A52A2A; background: #fef2f2; }
+        .donation-level-icon { width: 100%; height: 140px; flex-shrink: 0; border-radius: 6px; overflow: hidden; background: #e8e5df; display: flex; align-items: stretch; justify-content: stretch; }
+        .donation-level-icon img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; min-width: 0; min-height: 0; }
+        .donation-level-icon-placeholder { display: none; flex: 1; min-height: 100%; align-items: center; justify-content: center; color: #78716c; font-size: 0.75rem; text-align: center; padding: 0.5rem; background: #e8e5df; }
+        .donation-level-name { font-size: 1.25rem; font-weight: 600; color: #292524; margin: 0; }
+        .donation-level-fill { font-size: 0.8rem; color: #78716c; margin-bottom: 0.5rem; line-height: 1.3; }
+        .donation-level-amount { font-size: 1.75rem; font-weight: 700; color: #A52A2A; margin: 0; }
+        .donate-button { background: #A52A2A; color: white; padding: 1rem 2.5rem; border: none; border-radius: 4px; font-size: 1.125rem; font-weight: 600; cursor: pointer; transition: background 0.3s ease; margin-top: 2rem; }
+        .donate-button:hover { background: #b00d2a; }
+        .donate-button:disabled { background: #d6d3d1; cursor: not-allowed; }
+        .stay-section { background: white; border-radius: 8px; padding: 2rem; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); }
+        .date-input-group { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
+        .date-input-wrapper { flex: 1; min-width: 200px; }
+        .date-input-wrapper label { display: block; font-weight: 500; color: #292524; margin-bottom: 0.5rem; }
+        .date-input-wrapper input[type="date"] { width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 4px; font-family: inherit; font-size: 1rem; }
+        .date-input-wrapper input[type="date"]:focus { outline: none; border-color: #A52A2A; }
+        .stay-info { color: #57534e; font-size: 0.875rem; margin-top: 1rem; }
+        .book-stay-button { background: #A52A2A; color: white; padding: 0.75rem 2rem; border: none; border-radius: 4px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.3s ease; margin-top: 1.5rem; }
+        .book-stay-button:hover { background: #b00d2a; }
+        .book-stay-button:disabled { background: #d6d3d1; cursor: not-allowed; }
+        .hidden { display: none !important; }
+        @media (max-width: 767px) {
+            body { overflow-x: hidden; -webkit-text-size-adjust: 100%; }
+            header { overflow: visible; }
+            nav { overflow: visible; }
+            .about-dropdown-menu { z-index: 1100; }
+            .language-trigger { min-height: 44px; padding: 0.5rem 0.25rem 0.5rem 0.75rem; -webkit-tap-highlight-color: transparent; }
+            .language-option { min-height: 44px; padding: 0.75rem; -webkit-tap-highlight-color: transparent; }
+            .about-dropdown-button { min-height: 44px; padding: 0.5rem 0.25rem; }
+            .about-dropdown-item { min-height: 44px; padding: 0.75rem 1rem; display: flex; align-items: center; -webkit-tap-highlight-color: transparent; }
+            .nav-link { min-height: 44px; display: inline-flex; align-items: center; padding: 0.25rem 0; }
+            .order-button, .donate-button, .book-stay-button, .checkout-button { min-height: 44px; padding: 0.75rem 1.5rem; }
+            .collection-card { min-height: auto; }
+            .collection-header { min-height: 0; flex: 0 0 auto; }
+            .collection-desc { font-size: 0.9rem; line-height: 1.65; overflow-wrap: break-word; word-wrap: break-word; }
+            .grid.px-6 { padding-left: 1rem; padding-right: 1rem; }
+            .modal-content { max-height: 85vh; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 1rem; }
+            .max-w-3xl.mx-auto p { overflow-wrap: break-word; word-wrap: break-word; }
+            .form-group input, .form-group textarea, .date-input-wrapper input, .stay-inquiry-form input, .stay-inquiry-form textarea, .stay-inquiry-form select { font-size: 16px; min-height: 44px; }
+            .donation-level { min-height: 44px; -webkit-tap-highlight-color: transparent; }
+            input[type="radio"], input[type="checkbox"] { min-width: 20px; min-height: 20px; }
+        }
+    </style>
 </head>
-<body class="min-h-screen flex flex-col items-center justify-center px-6 text-stone-700">
-    <h1 class="text-4xl font-semibold mb-2" style="font-family:'Trajan Pro','Times New Roman',Georgia,serif;color:#8B4513">SICILIA BEDDA</h1>
-    <p class="text-xl mb-6">Support Our Cause — coming soon.</p>
-    <a href="index.html" class="text-lg" style="color:#A52A2A;text-decoration:none">Return to home</a>
+<body>
+    <header class="border-b border-stone-200 bg-white/90 backdrop-blur-sm md:sticky md:top-0 z-40">
+        <div class="max-w-4xl mx-auto px-6 py-4">
+            <div class="flex flex-col items-center mb-4">
+                <a href="index.html" class="text-center">
+                    <h1 class="text-4xl md:text-5xl mb-2 leading-tight" style="font-family: 'Trajan Pro', 'Times New Roman', Georgia, serif; font-weight: 600; letter-spacing: 0.15em; color: #8B4513;" data-i18n="heroTitle">SICILIA BEDDA</h1>
+                </a>
+            </div>
+            <nav class="flex flex-wrap justify-center gap-4 text-sm text-stone-700 items-center">
+                <a href="index.html" class="nav-link hover:text-stone-900" data-i18n="navHome">Home</a>
+                <div class="about-dropdown">
+                    <button type="button" class="about-dropdown-button nav-link hover:text-stone-900" id="about-dropdown-button" aria-haspopup="true" aria-expanded="false">
+                        <span data-i18n="navAbout">About</span>
+                    </button>
+                    <div class="about-dropdown-menu" id="about-dropdown-menu" role="menu">
+                        <a href="about.html" class="about-dropdown-item" role="menuitem" data-i18n="navOurFounder">Our Founder</a>
+                        <a href="sicily.html" class="about-dropdown-item" role="menuitem" data-i18n="navSicily">Sicily</a>
+                        <a href="parco-madonie.html" class="about-dropdown-item" role="menuitem" data-i18n="navParcoMadonie">Parco delle Madonie</a>
+                        <a href="isnello.html" class="about-dropdown-item" role="menuitem" data-i18n="navIsnello">Isnello</a>
+                        <a href="collesano.html" class="about-dropdown-item" role="menuitem" data-i18n="navCollesano">Collesano</a>
+                        <a href="castelbuono.html" class="about-dropdown-item" role="menuitem" data-i18n="navCastelbuono">Castelbuono</a>
+                    </div>
+                </div>
+                <a href="current-restoration.html" class="nav-link hover:text-stone-900" data-i18n="navCurrentRestoration">Current Restorations</a>
+                <a href="support-cause.html" class="nav-link hover:text-stone-900" data-i18n="navSupportCause">Support Our Cause</a>
+                <a href="contact.html" class="nav-link hover:text-stone-900" data-i18n="navContact">Contact Us</a>
+                <div class="language-dropdown">
+                    <button type="button" class="language-trigger nav-link hover:text-stone-900" id="language-button" aria-haspopup="true" aria-expanded="false"><img src="https://flagcdn.com/w40/gb.png" alt="" id="current-flag" class="language-trigger-flag"><span id="current-language">English</span><span class="language-trigger-arrow" aria-hidden="true">▾</span></button>
+                    <div class="language-menu" id="language-menu" role="menu">
+                        <div class="language-option" data-lang="en" role="menuitem"><img src="https://flagcdn.com/w40/gb.png" alt=""><span>English</span></div>
+                        <div class="language-option" data-lang="it" role="menuitem"><img src="https://flagcdn.com/w40/it.png" alt=""><span>Italiano</span></div>
+                        <div class="language-option" data-lang="scn" role="menuitem"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3Cpath fill='%23ffc72c' d='M0 0h3v1H0z'/%3E%3Cpath fill='%23d21034' d='M0 1h3v1H0z'/%3E%3C/svg%3E" alt=""><span>Sicilianu</span></div>
+                        <div class="language-option" data-lang="es" role="menuitem"><img src="https://flagcdn.com/w40/es.png" alt=""><span>Español</span></div>
+                        <div class="language-option" data-lang="fr" role="menuitem"><img src="https://flagcdn.com/w40/fr.png" alt=""><span>Français</span></div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="max-w-5xl mx-auto px-6 py-8">
+        <div id="payment-message" class="hidden mb-6 p-4 rounded-lg text-center text-stone-800"></div>
+        <div class="space-y-4 text-stone-700 leading-relaxed text-lg max-w-4xl mx-auto mb-5">
+            <p data-i18n="fundingPara1">Sicilia Bedda operates as a social enterprise. Restorations are funded through a combination of founder capital, public crowdfunding primarily for renovation work, revenue from future stays and programs, and select partnerships tied to Sicilian products and craftsmanship.</p>
+        </div>
+
+        <div class="max-w-5xl mx-auto border-t border-stone-200 pt-6 mb-6">
+            <div class="space-y-4 text-stone-700 leading-relaxed text-lg max-w-3xl mx-auto mb-6">
+                <h2 class="text-3xl font-normal text-stone-800 mb-3 text-center" data-i18n="heritageCollectionsTitle">Heritage Collections</h2>
+                <p data-i18n="heritageCollectionsIntro">Support restoration while connecting with authentic Sicilian traditions. Sicilia Bedda offers three distinct Heritage Collections, each sourced directly from family-owned producers across the Madonie region. When you purchase a collection, you support these local entrepreneurs and contribute to Sicilia Bedda's restoration work. Every order comes with a personal letter of appreciation from Sicilia Bedda's founder welcoming you to our community.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 px-6 items-stretch">
+                <div class="collection-card" data-collection="1">
+                    <div class="collection-image-wrap">
+                        <img src="Heritage Collection_Table.png" alt="Table Collection" class="collection-image collection-image-table" onerror="this.onerror=null; this.src=''; this.parentElement.querySelector('.image-placeholder').style.display='flex';">
+                    </div>
+                    <div class="image-placeholder" style="height: 300px; display: none;"><span data-i18n="heritageCollection1Alt">Table Collection</span></div>
+                    <div class="collection-content">
+                        <div class="collection-header">
+                            <h3 class="collection-title" data-i18n="heritageCollection1Title">Table Collection</h3>
+                            <p class="collection-desc" data-i18n="heritageCollection1Desc">Bring Sicily to the table—daily, simply, and with intention. This collection turns an ordinary meal into a small ritual of connection with olive oil from the Madonie, handmade craft meant to be used, and special seasonings and recipes that make tradition repeatable. Each reorder isn't just a restock—it's a return, sustaining restoration and keeping living traditions in motion.</p>
+                        </div>
+                        <div class="collection-contents">
+                            <div class="collection-contents-title" data-i18n="whatsInside">What's Inside</div>
+                            <ul class="collection-contents-list">
+                                <li>750ml bottle of fresh pressed extra-virgin olive oil from Madonie family groves</li>
+                                <li>Ceramic dish handcrafted in the Madonie for everyday use</li>
+                                <li>Sachet of herb seasoning from the Madonie</li>
+                                <li>Recipe cards for three of the founder's favorite traditional Madonite recipes</li>
+                            </ul>
+                        </div>
+                        <div class="collection-price support-amount" data-eur-amount="150" data-current-currency="EUR" data-i18n="heritageCollection1Price">150€</div>
+                        <button class="order-button" data-collection-id="1" data-i18n="orderButton">Order Now</button>
+                    </div>
+                </div>
+                <div class="collection-card" data-collection="2">
+                    <div class="collection-image-wrap">
+                        <img src="Heritage Collection_Village.png" alt="Village Collection" class="collection-image collection-image-village" onerror="this.onerror=null; this.src=''; this.parentElement.querySelector('.image-placeholder').style.display='flex';">
+                    </div>
+                    <div class="image-placeholder" style="height: 300px; display: none;"><span data-i18n="heritageCollection2Alt">Village Collection</span></div>
+                    <div class="collection-content">
+                        <div class="collection-header">
+                            <h3 class="collection-title" data-i18n="heritageCollection2Title">Village Collection</h3>
+                            <p class="collection-desc" data-i18n="heritageCollection2Desc">Step into the Madonie as if you've been there before. Anchored by an intimate local book, this collection makes the region feel familiar—through historic prints and mapped walks that turn village landmarks into something you recognize. It's a way to carry place into daily life with something you see, use, and return to as a reminder that belonging can begin from afar.</p>
+                        </div>
+                        <div class="collection-contents">
+                            <div class="collection-contents-title" data-i18n="whatsInside">What's Inside</div>
+                            <ul class="collection-contents-list">
+                                <li>Autographed copy of Matteo Orlando's <em>Le Madonie attraverso i miei occhi. Paesaggi, fauna, flora e funghi</em> — an intimate portrait of the Madonie</li>
+                                <li>Historical, artistic prints of Isnello, Collesano, and Castelbuono</li>
+                                <li>Photo map of the founder's favorite 10 places to see in the Madonie</li>
+                                <li>Two hand-painted ceramic trivets for everyday use in the kitchen</li>
+                            </ul>
+                        </div>
+                        <div class="collection-price support-amount" data-eur-amount="250" data-current-currency="EUR" data-i18n="heritageCollection2Price">250€</div>
+                        <button class="order-button" data-collection-id="2" data-i18n="orderButton">Order Now</button>
+                    </div>
+                </div>
+                <div class="collection-card" data-collection="3">
+                    <div class="collection-image-wrap">
+                        <img src="Heritage Collection_Artisan.png" alt="Artisan Collection" class="collection-image collection-image-artisan" onerror="this.onerror=null; this.src=''; this.parentElement.querySelector('.image-placeholder').style.display='flex';">
+                    </div>
+                    <div class="image-placeholder" style="height: 300px; display: none;"><span data-i18n="heritageCollection3Alt">Artisan Collection</span></div>
+                    <div class="collection-content">
+                        <div class="collection-header">
+                            <h3 class="collection-title" data-i18n="heritageCollection3Title">Artisan Collection</h3>
+                            <p class="collection-desc" data-i18n="heritageCollection3Desc">Offer your hands to Sicily's renewal. This collection is a covenant of stewardship—between maker and patron, village and visitor, craft and faith—carried through a singular work and the story of the workshop behind it. It asks for something more than admiration: attention, reverence, and a daily act of devotion that helps keep what is fragile from slipping away. This is a quiet, lasting commitment to the Madonie's living traditions.</p>
+                        </div>
+                        <div class="collection-contents">
+                            <div class="collection-contents-title" data-i18n="whatsInside">What's Inside</div>
+                            <ul class="collection-contents-list">
+                                <li>Autographed copy of Matteo Orlando's <em>Le Madonie attraverso i miei occhi. Paesaggi, fauna, flora e funghi</em> — an intimate portrait of the Madonie</li>
+                                <li>One-of-a-kind artisan piece, signed by its maker, including the story of its significance and the history of the workshop where it was made</li>
+                                <li>Handmade olivewood rosary—an intimate expression of faith and tradition</li>
+                            </ul>
+                        </div>
+                        <div class="collection-price support-amount" data-eur-amount="500" data-current-currency="EUR" data-i18n="heritageCollection3Price">500€</div>
+                        <button class="order-button" data-collection-id="3" data-i18n="orderButton">Order Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-5xl mx-auto px-6 border-t border-stone-200 pt-6 mb-6">
+            <div class="stay-section max-w-3xl mx-auto">
+                <h2 class="text-3xl font-normal text-stone-800 mb-3 text-center" data-i18n="stayTitle">Stay in a Restored Village Home</h2>
+                <p class="text-stone-700 leading-relaxed text-lg text-center" data-i18n="stayDescription">Experience authentic Sicilian village life in a carefully restored historic home.</p>
+                <p class="text-stone-600 leading-relaxed text-center mb-3" data-i18n="stayHomesIntro">Several restored homes may be available for your stay. Tell us your desired dates below; we will reply by email with availability and pricing options for homes that match.</p>
+                <form id="stay-inquiry-form" class="stay-inquiry-form">
+                    <div class="date-input-group">
+                        <div class="date-input-wrapper">
+                            <label for="stay-start-date" data-i18n="stayCheckIn">Check-in Date</label>
+                            <input type="date" id="stay-start-date" name="start-date" required>
+                        </div>
+                        <div class="date-input-wrapper">
+                            <label for="stay-end-date" data-i18n="stayCheckOut">Check-out Date</label>
+                            <input type="date" id="stay-end-date" name="end-date" required>
+                        </div>
+                    </div>
+                    <div class="date-input-group">
+                        <div class="date-input-wrapper">
+                            <label for="stay-guests" data-i18n="stayGuests">Number of Guests</label>
+                            <input type="number" id="stay-guests" name="guests" min="1" max="12" placeholder="e.g. 2" class="w-full px-3 py-2 border border-stone-300 rounded">
+                        </div>
+                        <div class="date-input-wrapper">
+                            <label for="stay-village" data-i18n="stayPreferredVillage">Preferred Village</label>
+                            <select id="stay-village" name="village" class="w-full px-3 py-2 border border-stone-300 rounded">
+                                <option value="">—</option>
+                                <option value="Isnello">Isnello</option>
+                                <option value="Collesano">Collesano</option>
+                                <option value="Castelbuono">Castelbuono</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group mt-4">
+                        <label for="stay-notes" data-i18n="stayNotes">Special requests or questions</label>
+                        <textarea id="stay-notes" name="notes" rows="2" class="w-full px-3 py-2 border border-stone-300 rounded" placeholder="Optional"></textarea>
+                    </div>
+                    <p class="stay-info" data-i18n="stayMinimum">Minimum stay is 1 week (7 nights).</p>
+                    <div class="stay-inquiry-contact mt-4 space-y-3">
+                        <div class="form-group"><label for="stay-name" data-i18n="stayInquiryName">Your Name</label><input type="text" id="stay-name" name="name" required class="w-full px-3 py-2 border border-stone-300 rounded"></div>
+                        <div class="form-group"><label for="stay-email" data-i18n="stayInquiryEmail">Email</label><input type="email" id="stay-email" name="email" required class="w-full px-3 py-2 border border-stone-300 rounded"></div>
+                        <div class="form-group"><label for="stay-phone" data-i18n="stayInquiryPhone">Phone</label><input type="tel" id="stay-phone" name="phone" class="w-full px-3 py-2 border border-stone-300 rounded"></div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <button type="submit" class="book-stay-button" id="book-stay-button" disabled data-i18n="stayButton">Request Availability & Pricing</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="max-w-5xl mx-auto px-6 border-t border-stone-200 pt-6 mb-6">
+            <div class="space-y-4 text-stone-700 leading-relaxed text-lg max-w-3xl mx-auto mb-4 text-left">
+                <h2 class="text-3xl font-normal text-stone-800 mb-3 text-center" data-i18n="donationsTitle">Donations</h2>
+                <p class="text-left" data-i18n="donationIntro">Your contribution, which directly supports the preservation and revitalization of historic homes in Sicilian villages, may be tax-deductible through one of Sicilia Bedda's partnerships with a U.S. based non-profit organization. Donations are organized in four tiers—Stone, Door, Tile, and Roof—each representing a different level of support. Choose the tier that fits you.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-5 max-w-5xl mx-auto">
+                <div class="donation-level" data-level="1" data-amount="1000" data-amount-display="1.000">
+                    <div class="donation-level-icon">
+                        <img src="donation-stone.png" alt="Building stone" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                        <div class="donation-level-icon-placeholder">Add donation-stone.png</div>
+                    </div>
+                    <div class="donation-level-name" data-i18n="donationLevel1Name">Stone</div>
+                    <div class="donation-level-amount support-amount" data-eur-amount="1000" data-current-currency="EUR">1.000€</div>
+                </div>
+                <div class="donation-level" data-level="2" data-amount="2500" data-amount-display="2.500">
+                    <div class="donation-level-icon">
+                        <img src="donation-door.png" alt="Wooden door" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                        <div class="donation-level-icon-placeholder">Add donation-door.png</div>
+                    </div>
+                    <div class="donation-level-name" data-i18n="donationLevel2Name">Door</div>
+                    <div class="donation-level-amount support-amount" data-eur-amount="2500" data-current-currency="EUR">2.500€</div>
+                </div>
+                <div class="donation-level" data-level="3" data-amount="5000" data-amount-display="5.000">
+                    <div class="donation-level-icon">
+                        <img src="donation-tile.png" alt="Sicilian ceramic tile" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                        <div class="donation-level-icon-placeholder">Add donation-tile.png</div>
+                    </div>
+                    <div class="donation-level-name" data-i18n="donationLevel3Name">Tile</div>
+                    <div class="donation-level-amount support-amount" data-eur-amount="5000" data-current-currency="EUR">5.000€</div>
+                </div>
+                <div class="donation-level" data-level="4" data-amount="10000" data-amount-display="10.000">
+                    <div class="donation-level-icon">
+                        <img src="donation-roof.png" alt="Terra cotta roof tiles" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                        <div class="donation-level-icon-placeholder">Add donation-roof.png</div>
+                    </div>
+                    <div class="donation-level-name" data-i18n="donationLevel4Name">Roof</div>
+                    <div class="donation-level-amount support-amount" data-eur-amount="10000" data-current-currency="EUR">10.000€</div>
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="donate-button" id="donate-now-button" data-i18n="donateNowButton" disabled>Donate Now</button>
+                <p class="text-stone-600 text-sm mt-4" id="selected-amount-text" style="display: none;"></p>
+                <p class="text-stone-700 leading-relaxed text-lg max-w-3xl mx-auto mt-5 text-left" data-i18n="supportIntegrated1">However you choose to contribute, your support enables the physical work of historical restoration—traditional materials, structural integrity work, and the skilled local tradespeople who revitalize Sicilian village life.</p>
+            </div>
+        </div>
+
+        <div class="max-w-5xl mx-auto px-6 py-3">
+            <div class="exchange-rate-footnote" id="support-exchange-rate-footnote">
+                <p>Exchange rates as of <span id="support-exchange-rate-date"></span>: 1 EUR = <span id="support-eur-to-usd-rate"></span> USD | 1 USD = <span id="support-usd-to-eur-rate"></span> EUR</p>
+            </div>
+        </div>
+
+        <div class="modal" id="checkout-modal">
+            <div class="modal-content">
+                <button class="modal-close" id="checkout-close">&times;</button>
+                <h2 class="text-2xl font-normal text-stone-800 mb-6" data-i18n="checkoutTitle">Order Heritage Collection</h2>
+                <div id="checkout-summary" class="mb-6 p-4 bg-white rounded border border-stone-200">
+                    <p class="font-semibold text-stone-800" id="checkout-collection-name"></p>
+                    <p class="text-stone-600" id="checkout-collection-price"></p>
+                    <div class="form-group mt-4">
+                        <span class="block font-medium text-stone-700 mb-2" data-i18n="checkoutPayInLabel">Pay in</span>
+                        <div class="flex gap-4">
+                            <label class="inline-flex items-center gap-2 cursor-pointer">
+                                <input type="radio" name="checkout-currency" value="EUR" class="checkout-currency-eur" checked>
+                                <span data-i18n="checkoutPayInEUR">Euros (EUR)</span>
+                            </label>
+                            <label class="inline-flex items-center gap-2 cursor-pointer">
+                                <input type="radio" name="checkout-currency" value="USD" class="checkout-currency-usd">
+                                <span data-i18n="checkoutPayInUSD">US Dollars (USD)</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <form class="checkout-form" id="checkout-form">
+                    <div class="form-group"><label data-i18n="checkoutNameLabel">Your Full Name</label><input type="text" id="checkout-name" required></div>
+                    <div class="form-group"><label data-i18n="checkoutEmailLabel">Email</label><input type="email" id="checkout-email" required></div>
+                    <div class="form-group"><label data-i18n="checkoutPhoneLabel">Phone</label><input type="tel" id="checkout-phone" required></div>
+                    <div class="form-group"><label data-i18n="checkoutRecipientLabel">Recipient Name (for personalization)</label><input type="text" id="checkout-recipient" data-i18n-placeholder="checkoutRecipientPlaceholder" placeholder="Name to appear on wax-sealed note/letter"></div>
+
+                    <p class="text-stone-800 font-medium mt-4 mb-2" data-i18n="checkoutBillingHeading">Billing address</p>
+                    <div class="form-group"><label data-i18n="checkoutBillingAddressLabel">Billing Address</label><input type="text" id="checkout-billing-address" required placeholder="Street address (one line)"></div>
+                    <div class="form-group"><label data-i18n="checkoutCityLabel">City</label><input type="text" id="checkout-billing-city" required></div>
+                    <div class="form-group"><label data-i18n="checkoutStateLabel">State / Province</label><input type="text" id="checkout-billing-state"></div>
+                    <div class="form-group"><label data-i18n="checkoutPostalLabel">Postal Code</label><input type="text" id="checkout-billing-postal" required></div>
+                    <div class="form-group"><label data-i18n="checkoutCountryLabel">Country</label><input type="text" id="checkout-billing-country" value="United States" required></div>
+
+                    <div class="form-group mt-4">
+                        <label class="inline-flex items-center gap-2 cursor-pointer font-medium text-stone-800">
+                            <input type="checkbox" id="checkout-same-address" name="checkout-same-address" checked>
+                            <span data-i18n="checkoutShippingSameAsBilling">Shipping address is the same as billing</span>
+                        </label>
+                    </div>
+                    <div id="checkout-shipping-section" class="hidden">
+                        <p class="text-stone-800 font-medium mt-2 mb-2" data-i18n="checkoutShippingHeading">Shipping address</p>
+                        <div class="form-group"><label data-i18n="checkoutShippingAddressLabel">Shipping Address</label><input type="text" id="checkout-shipping-address" placeholder="Street address (one line)"></div>
+                        <div class="form-group"><label data-i18n="checkoutCityLabel">City</label><input type="text" id="checkout-shipping-city"></div>
+                        <div class="form-group"><label data-i18n="checkoutStateLabel">State / Province</label><input type="text" id="checkout-shipping-state"></div>
+                        <div class="form-group"><label data-i18n="checkoutPostalLabel">Postal Code</label><input type="text" id="checkout-shipping-postal"></div>
+                        <div class="form-group"><label data-i18n="checkoutCountryLabel">Country</label><input type="text" id="checkout-shipping-country" value="United States"></div>
+                    </div>
+
+                    <div class="form-group"><label data-i18n="checkoutNoteLabel">Personalized note</label><textarea id="checkout-note" name="note" rows="3" class="w-full px-3 py-2 border border-stone-300 rounded" placeholder="Optional message to include with your order (e.g. gift message, instructions)"></textarea></div>
+                    <button type="submit" class="checkout-button" data-i18n="checkoutSubmitButton">Complete Order</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="max-w-5xl mx-auto px-6 py-5 border-t border-stone-200 mt-0">
+        <div class="text-center">
+            <img src="SiciliaBedda_Logo.PNG" alt="Sicilia Bedda" class="mx-auto" style="height: 120px;" />
+            <p class="mt-4 text-stone-600 text-sm">siciliabedda.com</p>
+            <p class="mt-2 text-stone-500 text-xs" data-i18n="footerOperatedBy">Operated by Desert Cove Ventures, LLC</p>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            var params = new URLSearchParams(window.location.search);
+            var msgEl = document.getElementById('payment-message');
+            if (msgEl && params.get('success') === '1') {
+                msgEl.classList.remove('hidden');
+                msgEl.classList.add('bg-green-100', 'border', 'border-green-300');
+                msgEl.textContent = 'Thank you for your payment. Your support helps restore historic homes in Sicilian villages.';
+                history.replaceState({}, '', window.location.pathname + window.location.hash);
+            } else if (msgEl && params.get('canceled') === '1') {
+                msgEl.classList.remove('hidden');
+                msgEl.classList.add('bg-amber-100', 'border', 'border-amber-300');
+                msgEl.textContent = 'Payment was canceled. You can try again whenever you\'re ready.';
+                history.replaceState({}, '', window.location.pathname + window.location.hash);
+            }
+        })();
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                if (typeof window.updatePageLanguage === 'function') {
+                    const currentLang = localStorage.getItem('siciliabedda-lang') || 'en';
+                    window.updatePageLanguage(currentLang);
+                }
+            }, 300);
+        });
+        let supportExchangeRate = null;
+        let supportPageCurrency = 'EUR';
+        async function fetchSupportExchangeRate() {
+            try {
+                const response = await fetch('https://api.exchangerate-api.com/v4/latest/EUR');
+                const data = await response.json();
+                supportExchangeRate = data.rates.USD;
+                updateSupportExchangeFootnote();
+            } catch (e) {
+                console.error('Error fetching exchange rate:', e);
+                supportExchangeRate = 1.08;
+                updateSupportExchangeFootnote();
+            }
+        }
+        function updateSupportExchangeFootnote() {
+            const dateEl = document.getElementById('support-exchange-rate-date');
+            const eurToUsdEl = document.getElementById('support-eur-to-usd-rate');
+            const usdToEurEl = document.getElementById('support-usd-to-eur-rate');
+            if (dateEl && eurToUsdEl && usdToEurEl) {
+                dateEl.textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+                const rate = supportExchangeRate || 1.08;
+                eurToUsdEl.textContent = rate.toFixed(4);
+                usdToEurEl.textContent = (1 / rate).toFixed(4);
+            }
+        }
+        function formatSupportAmount(amount, currency) {
+            if (currency === 'USD') {
+                const usdAmount = Math.round(amount * (supportExchangeRate || 1.08));
+                return '$' + usdAmount.toLocaleString('en-US', { maximumFractionDigits: 0, minimumFractionDigits: 0 });
+            }
+            const whole = Math.round(amount);
+            const formatted = whole.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+            return formatted + '€';
+        }
+        function convertAllSupportAmounts() {
+            document.querySelectorAll('.support-amount').forEach(el => {
+                const eur = parseFloat(el.dataset.eurAmount);
+                if (!eur) return;
+                el.textContent = formatSupportAmount(eur, supportPageCurrency);
+                el.dataset.currentCurrency = supportPageCurrency;
+            });
+            if (selectedDonationLevel && selectedAmountText.style.display === 'block') {
+                const t = window.translations[document.documentElement.lang || 'en'] || window.translations.en;
+                selectedAmountText.textContent = (t.donationSelectedAmount || 'Selected amount: {amount}').replace('{amount}', formatSupportAmount(parseInt(selectedDonationLevel.amount, 10), supportPageCurrency));
+            }
+            if (checkoutModal.classList.contains('active') && selectedCollection) {
+                document.querySelectorAll('input[name="checkout-currency"]').forEach(function(r) { r.checked = (r.value === supportPageCurrency); });
+                var modalCurrency = document.querySelector('input[name="checkout-currency"]:checked');
+                checkoutCollectionPrice.textContent = formatSupportAmount(selectedCollection.eurAmount, (modalCurrency && modalCurrency.value) || supportPageCurrency);
+            }
+        }
+        function setupSupportAmountClickHandlers() {
+            document.querySelectorAll('.support-amount').forEach(el => {
+                if (el.dataset.hasSupportClick) return;
+                el.dataset.hasSupportClick = 'true';
+                el.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    supportPageCurrency = supportPageCurrency === 'EUR' ? 'USD' : 'EUR';
+                    convertAllSupportAmounts();
+                });
+            });
+        }
+        fetchSupportExchangeRate();
+        setTimeout(setupSupportAmountClickHandlers, 500);
+        const checkoutModal = document.getElementById('checkout-modal');
+        const checkoutClose = document.getElementById('checkout-close');
+        const checkoutForm = document.getElementById('checkout-form');
+        const checkoutCollectionName = document.getElementById('checkout-collection-name');
+        const checkoutCollectionPrice = document.getElementById('checkout-collection-price');
+        let selectedCollection = null;
+        const collections = { 1: { id: 1, name: 'heritageCollection1Title', price: 'heritageCollection1Price', displayName: 'Table Collection', displayPrice: '150€', eurAmount: 150 }, 2: { id: 2, name: 'heritageCollection2Title', price: 'heritageCollection2Price', displayName: 'Village Collection', displayPrice: '250€', eurAmount: 250 }, 3: { id: 3, name: 'heritageCollection3Title', price: 'heritageCollection3Price', displayName: 'Artisan Collection', displayPrice: '500€', eurAmount: 500 } };
+        document.querySelectorAll('.order-button').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const button = e.currentTarget;
+                const id = button.getAttribute('data-collection-id');
+                if (!id || !collections[id]) return;
+                selectedCollection = collections[id];
+                const lang = document.documentElement.lang || 'en';
+                const t = (window.translations && window.translations[lang]) || (window.translations && window.translations.en) || {};
+                checkoutCollectionName.textContent = t[selectedCollection.name] || selectedCollection.displayName;
+                document.querySelectorAll('input[name="checkout-currency"]').forEach(function(r) { r.checked = (r.value === supportPageCurrency); });
+                checkoutCollectionPrice.textContent = formatSupportAmount(selectedCollection.eurAmount, supportPageCurrency);
+                checkoutModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        document.querySelectorAll('input[name="checkout-currency"]').forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                if (selectedCollection) checkoutCollectionPrice.textContent = formatSupportAmount(selectedCollection.eurAmount, radio.value);
+            });
+        });
+        function closeCheckout() { checkoutModal.classList.remove('active'); document.body.style.overflow = ''; checkoutForm.reset(); selectedCollection = null; document.getElementById('checkout-same-address').checked = true; document.getElementById('checkout-shipping-section').classList.add('hidden'); }
+        checkoutClose.addEventListener('click', closeCheckout);
+        checkoutModal.addEventListener('click', (e) => { if (e.target === checkoutModal) closeCheckout(); });
+        (function() {
+            var sameCheckbox = document.getElementById('checkout-same-address');
+            var shippingSection = document.getElementById('checkout-shipping-section');
+            var shippingInputs = ['checkout-shipping-address', 'checkout-shipping-city', 'checkout-shipping-postal', 'checkout-shipping-country'];
+            function toggleShipping() {
+                if (sameCheckbox.checked) {
+                    shippingSection.classList.add('hidden');
+                    shippingInputs.forEach(function(id) { var el = document.getElementById(id); if (el) el.removeAttribute('required'); });
+                } else {
+                    shippingSection.classList.remove('hidden');
+                    shippingInputs.forEach(function(id) { var el = document.getElementById(id); if (el) el.setAttribute('required', 'required'); });
+                }
+            }
+            sameCheckbox.addEventListener('change', function() {
+                toggleShipping();
+                if (!sameCheckbox.checked) {
+                    document.getElementById('checkout-shipping-address').value = document.getElementById('checkout-billing-address').value;
+                    document.getElementById('checkout-shipping-city').value = document.getElementById('checkout-billing-city').value;
+                    document.getElementById('checkout-shipping-state').value = document.getElementById('checkout-billing-state').value;
+                    document.getElementById('checkout-shipping-postal').value = document.getElementById('checkout-billing-postal').value;
+                    document.getElementById('checkout-shipping-country').value = document.getElementById('checkout-billing-country').value;
+                }
+            });
+            toggleShipping();
+        })();
+        function getCheckoutApiUrl() {
+            if (window.location.protocol === 'file:') return null;
+            return (window.location.origin || '') + '/api/create-checkout-session';
+        }
+        checkoutForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (!selectedCollection) return;
+            const apiUrl = getCheckoutApiUrl();
+            if (!apiUrl) {
+                alert('Payments require the site to be run from the server. Start the server (e.g. npm run dev) and open http://localhost:3000/support-cause.html');
+                return;
+            }
+            const lang = document.documentElement.lang || 'en';
+            const t = window.translations[lang] || window.translations.en;
+            const submitBtn = checkoutForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = t.checkoutProcessing || 'Redirecting to secure payment…';
+            try {
+                const payCurrencyEl = document.querySelector('input[name="checkout-currency"]:checked');
+                const payCurrency = (payCurrencyEl && payCurrencyEl.value) || 'EUR';
+                const amountCents = payCurrency === 'USD'
+                    ? Math.round(selectedCollection.eurAmount * (supportExchangeRate || 1.08) * 100)
+                    : Math.round(selectedCollection.eurAmount * 100);
+                const res = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        amount: amountCents,
+                        currency: payCurrency.toLowerCase(),
+                        type: 'collection',
+                        collectionId: selectedCollection.id,
+                        customerEmail: document.getElementById('checkout-email').value,
+                        description: 'Heritage Collection – Sicilia Bedda',
+                    }),
+                });
+                let data;
+                try { data = await res.json(); } catch (_) { throw new Error('Server error. Is the server running? Is STRIPE_SECRET_KEY set in .env?'); }
+                if (!res.ok) throw new Error(data.error || data.message || 'Checkout failed');
+                if (data.url) { window.location.href = data.url; return; }
+                throw new Error('No checkout URL received');
+            } catch (err) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+                alert(err.message || t.checkoutErrorMessage || 'Unable to start secure payment. Please try again or contact us.');
+                console.error(err);
+            }
+        });
+        const orig = window.updatePageLanguage;
+        window.updatePageLanguage = function(l) { if (orig) orig(l); if (checkoutModal.classList.contains('active') && selectedCollection) { const t = window.translations[l] || window.translations.en; checkoutCollectionName.textContent = t[selectedCollection.name] || selectedCollection.displayName; checkoutCollectionPrice.textContent = formatSupportAmount(selectedCollection.eurAmount, supportPageCurrency); } convertAllSupportAmounts(); };
+        let selectedDonationLevel = null;
+        const donationLevels = document.querySelectorAll('.donation-level');
+        const donateBtn = document.getElementById('donate-now-button');
+        const selectedAmountText = document.getElementById('selected-amount-text');
+        donationLevels.forEach(lvl => {
+            lvl.addEventListener('click', () => {
+                donationLevels.forEach(l => l.classList.remove('selected'));
+                lvl.classList.add('selected');
+                selectedDonationLevel = { level: lvl.getAttribute('data-level'), amount: lvl.getAttribute('data-amount'), amountDisplay: lvl.getAttribute('data-amount-display') || lvl.getAttribute('data-amount') };
+                donateBtn.disabled = false;
+                const t = window.translations[document.documentElement.lang || 'en'] || window.translations.en;
+                selectedAmountText.textContent = (t.donationSelectedAmount || 'Selected amount: {amount}').replace('{amount}', formatSupportAmount(parseInt(selectedDonationLevel.amount, 10), supportPageCurrency));
+                selectedAmountText.style.display = 'block';
+            });
+        });
+        donateBtn.addEventListener('click', async () => {
+            if (!selectedDonationLevel) return;
+            const apiUrl = getCheckoutApiUrl();
+            if (!apiUrl) {
+                alert('Payments require the site to be run from the server. Start the server (e.g. npm run dev) and open http://localhost:3000/support-cause.html');
+                return;
+            }
+            const t = window.translations[document.documentElement.lang || 'en'] || window.translations.en;
+            donateBtn.disabled = true;
+            donateBtn.textContent = t.donationProcessing || 'Redirecting to secure payment…';
+            try {
+                const payCurrency = supportPageCurrency;
+                const eurAmount = parseInt(selectedDonationLevel.amount, 10);
+                const amountCents = payCurrency === 'USD'
+                    ? Math.round(eurAmount * (supportExchangeRate || 1.08) * 100)
+                    : Math.round(eurAmount * 100);
+                const res = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        amount: amountCents,
+                        currency: payCurrency.toLowerCase(),
+                        type: 'donation',
+                        donationLevel: selectedDonationLevel.level,
+                        description: 'Donation – Sicilia Bedda',
+                    }),
+                });
+                let data;
+                try { data = await res.json(); } catch (_) { throw new Error('Server error. Is the server running? Is STRIPE_SECRET_KEY set in .env?'); }
+                if (!res.ok) throw new Error(data.error || data.message || 'Checkout failed');
+                if (data.url) { window.location.href = data.url; return; }
+                throw new Error('No checkout URL received');
+            } catch (err) {
+                donateBtn.disabled = false;
+                donateBtn.textContent = t.donateNowButton || 'Donate Now';
+                alert(err.message || t.donationErrorMessage || 'Unable to start secure payment. Please try again or contact us.');
+                console.error(err);
+            }
+        });
+        const stayStartDate = document.getElementById('stay-start-date');
+        const stayEndDate = document.getElementById('stay-end-date');
+        const bookStayButton = document.getElementById('book-stay-button');
+        const stayInquiryForm = document.getElementById('stay-inquiry-form');
+        const MIN_STAY_DAYS = 7;
+        function validateStayDates() {
+            if (stayStartDate.value && stayEndDate.value) {
+                const start = new Date(stayStartDate.value);
+                const end = new Date(stayEndDate.value);
+                const diffTime = Math.abs(end - start);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                if (end > start && diffDays >= MIN_STAY_DAYS) bookStayButton.disabled = false;
+                else bookStayButton.disabled = true;
+            } else bookStayButton.disabled = true;
+        }
+        stayStartDate.addEventListener('change', () => {
+            if (stayStartDate.value) {
+                const minEndDate = new Date(stayStartDate.value);
+                minEndDate.setDate(minEndDate.getDate() + MIN_STAY_DAYS);
+                stayEndDate.min = minEndDate.toISOString().split('T')[0];
+                if (stayEndDate.value && new Date(stayEndDate.value) < minEndDate) stayEndDate.value = '';
+            }
+            validateStayDates();
+        });
+        stayEndDate.addEventListener('change', validateStayDates);
+        const today = new Date().toISOString().split('T')[0];
+        stayStartDate.min = today;
+        stayInquiryForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const t = window.translations[document.documentElement.lang || 'en'] || window.translations.en;
+            const name = document.getElementById('stay-name').value.trim();
+            const email = document.getElementById('stay-email').value.trim();
+            const phone = (document.getElementById('stay-phone').value || '').trim();
+            const guests = document.getElementById('stay-guests').value;
+            const village = document.getElementById('stay-village').value;
+            const notes = (document.getElementById('stay-notes').value || '').trim();
+            const message = [
+                'Stay / accommodation inquiry',
+                'Check-in: ' + stayStartDate.value,
+                'Check-out: ' + stayEndDate.value,
+                guests ? 'Guests: ' + guests : '',
+                village ? 'Preferred village/area: ' + village : '',
+                notes ? 'Notes: ' + notes : ''
+            ].filter(Boolean).join('\n');
+            bookStayButton.disabled = true;
+            bookStayButton.textContent = (t.staySending || 'Sending…');
+            try {
+                const res = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name: name, email: email, phone: phone, country: '—', message: message })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    alert(t.stayAvailabilityMessage || 'Thank you for your interest! We will reply by email with availability and pricing options for your dates.');
+                    stayInquiryForm.reset();
+                    stayStartDate.min = new Date().toISOString().split('T')[0];
+                    bookStayButton.disabled = true;
+                } else {
+                    alert(t.stayErrorMessage || 'Something went wrong. Please try again or email us directly.');
+                }
+            } catch (err) {
+                alert(t.stayErrorMessage || 'Something went wrong. Please try again or email us directly.');
+            }
+            bookStayButton.disabled = false;
+            bookStayButton.textContent = t.stayButton || 'Request Availability & Pricing';
+            validateStayDates();
+        });
+        (function() {
+            const page = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-link').forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === page || (page === '' && href === 'index.html') || ((page === 'support-cause.html' || page === 'support-cause' || page === 'support') && href === 'support-cause.html')) link.classList.add('active');
+            });
+        })();
+    </script>
 </body>
 </html>

@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sicilia Bedda – Preservation & Village Life in the Madonie</title>
+    <title>Sicily - Sicilia Bedda</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="translations(1).js"></script>
+    <script src="translations-data.js"></script>
     <script>window.translations = window.translations || (typeof translations !== 'undefined' ? translations : null);</script>
     <style>
         body { font-family: 'Georgia Pro', Georgia, 'Times New Roman', serif; background-color: #faf8f5; }
-        h1, h2, h3 { font-family: 'Georgia Pro', Georgia, 'Times New Roman', serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Georgia Pro', Georgia, 'Times New Roman', serif; text-align: center; font-weight: 400; }
         .language-dropdown { position: relative; }
         .language-trigger { background: none; border: none; cursor: pointer; font: inherit; font-size: inherit; color: inherit; padding: 0.25rem 0; display: inline-flex; align-items: center; gap: 0.35rem; color: #44403c; border-left: 1px solid #e7e5e4; margin-left: 0.5rem; padding-left: 0.75rem; }
         .language-trigger:hover { color: #1c1917; }
@@ -22,12 +22,16 @@
         .about-dropdown-button:hover { color: #1c1917; }
         .about-dropdown-menu { position: absolute; top: 100%; left: 0; margin-top: 2px; background: white; border: 1px solid #d1d5db; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); min-width: 200px; z-index: 1000; display: none; }
         .about-dropdown-menu.active { display: block; }
-        .about-dropdown-item { display: block; padding: 0.5rem 1rem; min-height: 36px; font-size: 0.9375rem; color: #44403c; text-decoration: none; transition: background 0.15s; line-height: 1.4; }
+        .about-dropdown-item { display: block; padding: 0.5rem 1rem; min-height: 36px; font-size: 0.9375rem; color: #44403c; text-decoration: none; transition: background 0.15s; line-height: 1.4; text-align: center; font-weight: 400; }
         .about-dropdown-item:hover { background: #f5f5f4; color: #1c1917; }
         .language-option { padding: 0.5rem 0.75rem; display: flex; align-items: center; gap: 0.5rem; cursor: pointer; font-size: 0.875rem; color: #44403c; transition: background 0.15s; }
         .language-option:hover { background: #f5f5f4; color: #1c1917; }
         .language-option img { width: 20px; height: 15px; object-fit: cover; border-radius: 1px; }
         .nav-link { font-weight: 400; }
+        .facts-section { background: #f5f5f4; border-left: 3px solid #8B4513; padding: 1.5rem; margin: 2rem 0; border-radius: 4px; }
+        .facts-section h3 { font-size: 1.5rem; font-weight: 400; color: #8B4513; margin-bottom: 1rem; text-align: center; }
+        .facts-list { list-style-type: disc; list-style-position: inside; padding-left: 0; }
+        .facts-list li { padding-left: 0.5rem; margin-left: 0; margin-bottom: 0.5rem; }
         @media (max-width: 767px) {
             body { overflow-x: hidden; -webkit-text-size-adjust: 100%; }
             header { overflow: visible; }
@@ -45,7 +49,7 @@
     <header class="border-b border-stone-200 bg-white/90 backdrop-blur-sm md:sticky md:top-0 z-40">
         <div class="max-w-4xl mx-auto px-6 py-4">
             <div class="flex flex-col items-center mb-4">
-                <a href="index.html" class="text-center"><h1 class="text-4xl md:text-5xl mb-2 leading-tight" style="font-family: 'Trajan Pro', 'Times New Roman', Georgia, serif; font-weight: 600; letter-spacing: 0.15em; color: #8B4513;" data-i18n="heroTitle">SICILIA BEDDA</h1></a>
+                <a href="index.html" class="text-center"><h1 class="text-4xl md:text-5xl mb-2 leading-tight" style="font-family: 'Trajan Pro', 'Times New Roman', Georgia, serif; font-weight: 400; letter-spacing: 0.15em; color: #8B4513;" data-i18n="heroTitle">SICILIA BEDDA</h1></a>
             </div>
             <nav class="flex flex-wrap justify-center gap-4 text-sm text-stone-700 items-center">
                 <a href="index.html" class="nav-link hover:text-stone-900" data-i18n="navHome">Home</a>
@@ -81,18 +85,28 @@
             <img src="sicily.jpg" alt="Sicily" class="w-full" style="height: 500px; object-fit: cover;" onerror="this.style.display='none';">
         </div>
         <div class="space-y-5 text-stone-700 leading-relaxed text-lg max-w-3xl mx-auto">
-            <p data-i18n="homeIntro1">Sicilia Bedda is dedicated to the preservation and revitalization of historic homes in Sicilian villages. Through restoration, stewardship, and a deep commitment to the Parco delle Madonie, we work to return abandoned structures to active use—as homes, as places of craft, and as anchors of village life.</p>
-            <p data-i18n="homeIntro2">We invite you to explore Sicily and the Madonie region, meet our founder, learn about our current restoration projects, and discover how you can support our cause through contributions or Heritage Collection purchases.</p>
+            <p data-i18n="sicilyPara1">Sicily is not a destination to check off a list. It is a place that asks you to slow down, to notice, to stay. The island holds layers of history—Greek temples, Norman cathedrals, Arab-influenced architecture, Baroque towns rebuilt after earthquakes. But more than monuments, Sicily offers something increasingly rare—a way of life that has not yet been fully commodified, a pace that follows seasons and relationships rather than algorithms, communities where people still know their neighbors.</p>
+            <p data-i18n="sicilyPara11" class="mt-5">Sicily holds seven UNESCO World Heritage Sites—from the ancient Greek theaters of Syracuse and Taormina to the Arab-Norman churches of Palermo, from the Baroque cities of the Val di Noto to the Aeolian Islands' volcanic landscapes. This extraordinary concentration of recognized cultural and natural heritage reflects millennia of civilizations that left their mark on the island, each contributing to the complex identity that makes Sicily unlike anywhere else in the Mediterranean.</p>
+            <p data-i18n="sicilyPara10" class="mt-5">What makes Sicily truly incredible is its refusal to be reduced to a single narrative. It is not just beautiful—it is layered, textured, and deeply human. The cuisine carries Phoenician, Arab, Norman, and Spanish influences. The architecture tells stories of conquest and coexistence. And the people, shaped by centuries of resilience, maintain a fierce pride in their land, their traditions, and their way of living.</p>
+        </div>
+        <div class="facts-section max-w-3xl mx-auto mt-8">
+            <h3 data-i18n="interestingFactsTitle">Interesting Facts</h3>
+            <ul class="facts-list text-stone-700 space-y-2">
+                <li><span class="font-semibold" data-i18n="factArea">Area:</span> <span data-i18n="sicilyArea">25,711 km² (9,927 sq mi)</span></li>
+                <li><span class="font-semibold" data-i18n="factPopulation">Population:</span> <span data-i18n="sicilyPopulation">~5 million</span></li>
+                <li><span class="font-semibold" data-i18n="factUNESCO">UNESCO Sites:</span> <span data-i18n="sicilyUNESCO">7 World Heritage Sites</span></li>
+                <li><span class="font-semibold" data-i18n="factInfluences">Cultural Influences:</span> <span data-i18n="sicilyInfluences">Greek, Arab, Norman, Spanish</span></li>
+            </ul>
         </div>
     </section>
     <footer class="max-w-5xl mx-auto px-6 py-5 border-t border-stone-200 mt-0">
         <div class="text-center">
-            <img src="SiciliaBedda_Logo.PNG" alt="Sicilia Bedda" class="mx-auto" style="height: 120px;" onerror="this.style.display='none'">
+            <img src="SiciliaBedda_Logo.PNG" alt="Sicilia Bedda" class="mx-auto" style="height: 120px;" />
             <p class="mt-4 text-stone-600 text-sm">siciliabedda.com</p>
             <p class="mt-2 text-stone-500 text-xs" data-i18n="footerOperatedBy">Operated by Desert Cove Ventures, LLC</p>
         </div>
     </footer>
     <script src="language.js"></script>
-    <script>(function(){var p=window.location.pathname.split('/').pop()||'';document.querySelectorAll('.nav-link').forEach(function(l){if((l.getAttribute('href')||'').split('/').pop()===p)l.classList.add('active');});document.getElementById('about-dropdown-button').addEventListener('click',function(){document.getElementById('about-dropdown-menu').classList.toggle('active');});document.getElementById('language-button').addEventListener('click',function(){document.getElementById('language-menu').classList.toggle('active');});})();</script>
+    <script>(function(){var p=window.location.pathname.split('/').pop()||'';document.querySelectorAll('.nav-link').forEach(function(l){if((l.getAttribute('href')||'').split('/').pop()===p)l.classList.add('active');});})();</script>
 </body>
 </html>

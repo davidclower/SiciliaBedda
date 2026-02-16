@@ -1,5 +1,5 @@
-// Local development server for testing the contact API
-// Run with: npm run dev
+// Local development server
+// Run: npm run dev
 
 require('dotenv').config();
 const express = require('express');
@@ -7,23 +7,29 @@ const cors = require('cors');
 const path = require('path');
 const app = express();
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Explicit route for Home page (so Home link always works)
-const indexPath = path.join(__dirname, 'index.html');
-app.get('/', (req, res) => res.sendFile(indexPath));
-app.get('/index.html', (req, res) => res.sendFile(indexPath));
+// Canonical pages - one file per page, clean URLs
+const pages = [
+  { file: 'index.html', routes: ['/', '/index.html'] },
+  { file: 'about.html', routes: ['/about', '/about.html'] },
+  { file: 'sicily.html', routes: ['/sicily', '/sicily.html'] },
+  { file: 'parco-madonie.html', routes: ['/parco-madonie', '/parco-madonie.html'] },
+  { file: 'isnello.html', routes: ['/isnello', '/isnello.html'] },
+  { file: 'collesano.html', routes: ['/collesano', '/collesano.html'] },
+  { file: 'castelbuono.html', routes: ['/castelbuono', '/castelbuono.html'] },
+  { file: 'current-restoration.html', routes: ['/current-restoration', '/current-restoration.html'] },
+  { file: 'support-cause.html', routes: ['/support', '/support-cause', '/support.html', '/support-cause.html'] },
+  { file: 'contact.html', routes: ['/contact', '/contact.html'] }
+];
 
-// Explicit routes for Support page (so it always loads)
-const supportPath = path.join(__dirname, 'support-cause.html');
-app.get('/support', (req, res) => res.sendFile(supportPath));
-app.get('/support.html', (req, res) => res.sendFile(supportPath));
-app.get('/support-cause', (req, res) => res.sendFile(supportPath));
-app.get('/support-cause.html', (req, res) => res.sendFile(supportPath));
+pages.forEach(({ file, routes }) => {
+  const filePath = path.join(__dirname, file);
+  routes.forEach(route => app.get(route, (req, res) => res.sendFile(filePath)));
+});
 
-// Serve static HTML, JS, CSS, and assets from current directory
+// Serve static files (images, CSS, JS)
 app.use(express.static(path.join(__dirname)));
 
 // Import the contact handler and Stripe checkout

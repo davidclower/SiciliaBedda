@@ -1,5 +1,5 @@
-// Local development server for testing the contact API
-// Run with: npm run dev
+// Local development server
+// Run: npm run dev
 
 require('dotenv').config();
 const express = require('express');
@@ -7,50 +7,29 @@ const cors = require('cors');
 const path = require('path');
 const app = express();
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Explicit route for Home page (so Home link always works)
-const indexPath = path.join(__dirname, 'index.html');
-app.get('/', (req, res) => res.sendFile(indexPath));
-app.get('/index.html', (req, res) => res.sendFile(indexPath));
+// Canonical pages - one file per page, clean URLs
+const pages = [
+  { file: 'index.html', routes: ['/', '/index.html'] },
+  { file: 'about.html', routes: ['/about', '/about.html'] },
+  { file: 'sicily.html', routes: ['/sicily', '/sicily.html'] },
+  { file: 'parco-madonie.html', routes: ['/parco-madonie', '/parco-madonie.html'] },
+  { file: 'isnello.html', routes: ['/isnello', '/isnello.html'] },
+  { file: 'collesano.html', routes: ['/collesano', '/collesano.html'] },
+  { file: 'castelbuono.html', routes: ['/castelbuono', '/castelbuono.html'] },
+  { file: 'current-restoration.html', routes: ['/current-restoration', '/current-restoration.html'] },
+  { file: 'support-cause.html', routes: ['/support', '/support-cause', '/support.html', '/support-cause.html'] },
+  { file: 'contact.html', routes: ['/contact', '/contact.html'] }
+];
 
-// Explicit routes for Support page (so it always loads)
-const supportPath = path.join(__dirname, 'support-cause.html');
-app.get('/support', (req, res) => res.sendFile(supportPath));
-app.get('/support.html', (req, res) => res.sendFile(supportPath));
-app.get('/support-cause', (req, res) => res.sendFile(supportPath));
-app.get('/support-cause.html', (req, res) => res.sendFile(supportPath));
+pages.forEach(({ file, routes }) => {
+  const filePath = path.join(__dirname, file);
+  routes.forEach(route => app.get(route, (req, res) => res.sendFile(filePath)));
+});
 
-// Explicit routes for About page (so it always loads)
-const aboutPath = path.join(__dirname, 'about.html');
-app.get('/about', (req, res) => res.sendFile(aboutPath));
-app.get('/about.html', (req, res) => res.sendFile(aboutPath));
-
-// Explicit routes for Current Restorations page (filename has space)
-const currentRestorationPath = path.join(__dirname, 'current-restoration 12.html');
-app.get('/current-restoration', (req, res) => res.sendFile(currentRestorationPath));
-app.get('/current-restoration.html', (req, res) => res.sendFile(currentRestorationPath));
-
-// Explicit routes for About sub-pages
-const collesanoPath = path.join(__dirname, 'collesano.html');
-app.get('/collesano', (req, res) => res.sendFile(collesanoPath));
-app.get('/collesano.html', (req, res) => res.sendFile(collesanoPath));
-const castelbuonoPath = path.join(__dirname, 'castelbuono.html');
-app.get('/castelbuono', (req, res) => res.sendFile(castelbuonoPath));
-app.get('/castelbuono.html', (req, res) => res.sendFile(castelbuonoPath));
-const sicilyPath = path.join(__dirname, 'sicily.html');
-app.get('/sicily', (req, res) => res.sendFile(sicilyPath));
-app.get('/sicily.html', (req, res) => res.sendFile(sicilyPath));
-const parcoMadoniePath = path.join(__dirname, 'parco-madonie.html');
-app.get('/parco-madonie', (req, res) => res.sendFile(parcoMadoniePath));
-app.get('/parco-madonie.html', (req, res) => res.sendFile(parcoMadoniePath));
-const isnelloPath = path.join(__dirname, 'isnello.html');
-app.get('/isnello', (req, res) => res.sendFile(isnelloPath));
-app.get('/isnello.html', (req, res) => res.sendFile(isnelloPath));
-
-// Serve static HTML, JS, CSS, and assets from current directory
+// Serve static files (images, CSS, JS)
 app.use(express.static(path.join(__dirname)));
 
 // Import the contact handler and Stripe checkout

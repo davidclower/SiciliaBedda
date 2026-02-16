@@ -22,8 +22,8 @@
     { "source": "/castelbuono.html", "destination": "/castelbuono.html" },
     { "source": "/contact", "destination": "/contact.html" },
     { "source": "/contact.html", "destination": "/contact.html" },
-    { "source": "/current-restoration", "destination": "/current-restoration%2012.html" },
-    { "source": "/current-restoration.html", "destination": "/current-restoration%2012.html" },
+    { "source": "/current-restoration", "destination": "/current-restoration.html" },
+    { "source": "/current-restoration.html", "destination": "/current-restoration.html" },
     { "source": "/(.*)", "destination": "/$1" }
   ],
   "headers": [
